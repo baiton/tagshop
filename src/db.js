@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch')
 const { SET_USER } = require('./constants')
-const apiURL = 'http://tagshop.co/api/'
+const apiURL = 'https://tagshop.co/api/'
 
 const getOptions = (token, method = 'GET', body = null) => {
 	return {
