@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch')
 const { SET_USER } = require('./constants')
-const apiURL = 'http://tagshop.co/api/'
+const apiURL = 'https://tagshop.co/api/'
 
 const getOptions = (token, method = 'GET', body = null) => {
 	return {
@@ -11,10 +11,8 @@ const getOptions = (token, method = 'GET', body = null) => {
 }
 
 export const getUser = user => (dispatch, getState) => {
-	if (user.length > 0) {
-		fetch(apiURL + 'ig/media/' + user, getOptions(getState()))
-			.then(res => res.json())
-			.then(data => dispatch({ type: SET_USER, payload: data }))
-			.catch(err => console.log(err))
-	}
+	fetch(apiURL + 'ig/media/' + user, getOptions(getState()))
+		.then(res => res.JSON)
+		.then(data => dispatch({ type: SET_USER, payload: data }))
+		.catch(err => console.log(err))
 }

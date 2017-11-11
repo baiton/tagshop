@@ -3,16 +3,10 @@ import Product_Card from '../components/_Product_Card.js'
 
 const React = require('react')
 const { Link } = require('react-router-dom')
-const { List, ListItem, Button } = require('t63')
 const { connect } = require('react-redux')
-const { SET_USER } = require('../constants')
-const { getUser } = require('../db.js')
 
 class Home extends React.Component {
-	componentDidMount() {
-		this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
-		console.log('props', this.props)
-	}
+	componentDidMount() {}
 
 	render() {
 		const props = this.props
