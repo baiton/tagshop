@@ -4,6 +4,8 @@
 	"private": true,
 	"dependencies": {
 		"@material/card": "^0.24.0",
+		"@material/layout-grid": "^0.24.0",
+		"@material/select": "^0.24.0",
 		"@material/grid-list": "^0.24.0",
 		"dotenv": "^4.0.0",
 		"history": "^4.7.2",

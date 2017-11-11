@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import '../css/product_card.css'
-
-
 
 const Product_Card = (props) => {
 
