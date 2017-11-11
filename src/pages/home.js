@@ -1,5 +1,6 @@
 import history from '../history'
 import Product_Card from '../components/_Product_Card.js'
+import '../css/home.css'
 
 const React = require('react')
 const { Link } = require('react-router-dom')
@@ -12,7 +13,7 @@ class Home extends React.Component {
 		const props = this.props
 		const userName = this.props.location.pathname.substring(1)
 		return (
-			<div className="avenir">
+			<div className="avenir wrapper">
 				<div>
 					<header className="flex flex-row justify-between items-center h3 pa2">
 						<h1 className="tc f2">Tagshop</h1>

@@ -11,8 +11,10 @@ const getOptions = (token, method = 'GET', body = null) => {
 }
 
 export const getUser = user => (dispatch, getState) => {
-	fetch(apiURL + 'ig/media/' + user, getOptions(getState()))
-		.then(res => res.JSON)
-		.then(data => dispatch({ type: SET_USER, payload: data }))
-		.catch(err => console.log(err))
+	if (user.length > 0) {
+		fetch(apiURL + 'ig/media/' + user, getOptions(getState()))
+			.then(res => res.json())
+			.then(data => dispatch({ type: SET_USER, payload: data }))
+			.catch(err => console.log(err))
+	}
 }
