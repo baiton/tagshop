@@ -1,4 +1,6 @@
 import history from '../history'
+import Product_Card from '../components/_Product_Card.js'
+
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { List, ListItem, Button } = require('t63')
@@ -37,6 +39,7 @@ class Home extends React.Component {
 						No
 					</a>
 				</div>
+				<Product_Card></Product_Card>
 			</div>
 		)
 	}
