@@ -29,17 +29,14 @@ class Home extends React.Component {
 				</div>
 				<h2 className="pl2">Is {userName} your userName?</h2>
 				<div className="pl2">
-					<a
-						className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue"
-						onclick={props.handleUser(userName)}
-					>
+					<a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
 						Yes
 					</a>
 					<a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
 						No
 					</a>
 				</div>
-				<Product_Card></Product_Card>
+				<Product_Card />
 			</div>
 		)
 	}
