@@ -17,10 +17,14 @@ if (pathOr(null, 'media', props.user.user) !== []) {
 }
 
 class UserStore extends React.Component {
-  componentDidMount() {
+	
+
+  componentWillMount() {
     this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
-    console.log('props', this.props)
+    console.log('willMount', this.props)
   }
+
+
 
   render() {
     const props = this.props
@@ -65,7 +69,6 @@ function mapActionsToProps(dispatch) {
       return e => {
         doDispatch('SET_USER', null, name)
       }
-
     },
     handleUserVerificationNo: e => window.alert('Please DM this artist and let them know to update their shipping information in order to purchase this product')
     // handleUserVerificationYes:

@@ -25,7 +25,7 @@ class Cart extends React.Component {
         </div>
         <div>
           <main>
-            <div>
+            <div className="entire-cart">
               <_Cart />
               <_Item />
               <a className="w-25  f6 link grow ba ph3 pv2 mb2 dib fr tc black">
