@@ -6,10 +6,10 @@ export default combineReducers({
 	user
 })
 
-function user(state = '', action) {
+function user(state = {}, action) {
 	switch (action.type) {
 		case SET_USER:
-			return action.payload
+			return merge(state, {user: action.payload})
 		default:
 			return state
 	}

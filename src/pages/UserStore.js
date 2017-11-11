@@ -1,13 +1,13 @@
 import history from '../history'
-import Product_Card from '../components/_Product_Card.js'
 import '../css/userstore.css'
-
+import Product_Card from '../components/_Product_Card.js'
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { List, ListItem, Button } = require('t63')
 const { connect } = require('react-redux')
 const { SET_USER } = require('../constants')
 const { getUser } = require('../db.js')
+const { map, pathOr } = require('ramda')
 
 class UserStore extends React.Component {
 	componentDidMount() {
@@ -18,6 +18,7 @@ class UserStore extends React.Component {
 	render() {
 		const props = this.props
 		const userName = this.props.location.pathname.substring(1)
+		console.log('props', props)
 		return (
 			<div className="avenir">
 				<div>
@@ -43,7 +44,7 @@ class UserStore extends React.Component {
 					</div>
 				</section>
 				<div className="card-wrapper">
-					<Product_Card />
+					{map(Product_Card, pathOr([], ['media'], props.user.user))}
 				</div>
 			</div>
 		)
