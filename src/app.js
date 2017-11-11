@@ -7,7 +7,7 @@ import UserStore from './pages/UserStore'
 
 const App = () => {
 	return (
-		<BrowserRouter history={history}>
+		<BrowserRouter>
 			<div>
 				<Switch>
 					<Route exact path="/" component={Home} />

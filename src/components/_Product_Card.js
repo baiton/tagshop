@@ -3,11 +3,10 @@ import '../css/product_card.css'
 
 
 
-export default class Product_Card extends Component {
+const Product_Card = (props) => {
 
-  render() {
     return (
-      <div className="mdc-card demo-card demo-card--with-avatar">
+      <div className="mdc-layout-grid__cell mdc-card demo-card demo-card--with-avatar">
         <section className="mdc-card__primary">
           <div className="demo-card__avatar"></div>
           <h1 className="mdc-card__title">Username</h1>
@@ -25,5 +24,6 @@ export default class Product_Card extends Component {
         </section>
       </div>
     )
-  }
+
 }
+export default Product_Card
