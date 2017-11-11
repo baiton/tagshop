@@ -1,42 +1,39 @@
 import history from '../history'
-import Product_Card from '../components/_Product_Card.js'
+import _Cart from '../components/_Cart'
+import _Item from '../components/_Item'
 
 const React = require('react')
 const { Link } = require('react-router-dom')
-const { List, ListItem, Button } = require('t63')
+const { List, ListItem, Button, TextField } = require('t63')
 const { connect } = require('react-redux')
 const { SET_USER } = require('../constants')
 const { getUser } = require('../db.js')
 
-class UserStore extends React.Component {
+class Cart extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
     console.log('props', this.props)
   }
 
   render() {
     const props = this.props
-    const userName = this.props.location.pathname.substring(1)
     return (
       <div className="avenir">
         <div>
           <header className="flex flex-row justify-between items-center h3 pa2">
             <h1 className="tc f2">Tagshop</h1>
-            <a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
-              Login with Instagram
-            </a>
           </header>
         </div>
-        <h2 className="pl2">Is {userName} your userName?</h2>
-        <div className="pl2">
-          <a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
-            Yes
-          </a>
-          <a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
-            No
-          </a>
+        <div>
+          <main>
+            <div>
+              <_Cart />
+              <_Item />
+              <a className="w-25  f6 link grow ba ph3 pv2 mb2 dib fr tc black">
+                BUY
+              </a>
+            </div>
+          </main>
         </div>
-        <Product_Card />
       </div>
     )
   }
@@ -67,4 +64,4 @@ const mapStateToProps = state => {
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
-export default connector(UserStore)
+export default connector(Cart)
