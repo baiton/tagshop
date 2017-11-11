@@ -17,7 +17,7 @@ class UserStore extends React.Component {
 
 	render() {
 		const props = this.props
-		const userName = this.props.location.pathname.substring(1)
+		const userName = props.location.pathname.substring(1)
 		return (
 			<div className="avenir wrapper">
 				<div>
