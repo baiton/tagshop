@@ -8,7 +8,7 @@ const { connect } = require('react-redux')
 const { SET_USER } = require('../constants')
 const { getUser } = require('../db.js')
 
-class Home extends React.Component {
+class UserStore extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
 		console.log('props', this.props)
@@ -67,4 +67,4 @@ const mapStateToProps = state => {
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
-export default connector(Home)
+export default connector(UserStore)
