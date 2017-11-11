@@ -7,12 +7,19 @@ const {List, ListItem, Button} = require('t63')
 const {connect} = require('react-redux')
 const {SET_USER} = require('../constants')
 const {getUser} = require('../db.js')
-const {map} = require('ramda')
+const {map, pathOr} = require('ramda')
+
+function mapper(props) {
+if (pathOr(null, 'media', props.user.user) !== []) {
+	console.log('pathOr', pathOr([], 'media', props.user.user))
+	map(Product_Card, pathOr([], 'media', props.user.user))
+}
+}
 
 class UserStore extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
-    console.log('props', this.props)
+    console.log('willMount', this.props)
   }
 
   render() {
@@ -37,8 +44,7 @@ class UserStore extends React.Component {
         </section>
         <div className="card-wrapper mdc-layout-grid__inner">
           {
-						console.log('log props', props)
-						//map(Product_Card, props.user.user.media)
+						mapper(props)
 					}
         </div>
       </div>
