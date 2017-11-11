@@ -1,13 +1,14 @@
 const fetch = require('isomorphic-fetch')
 const { SET_USER } = require('./constants')
-const apiURL = 'https://tagshop.co/api/'
+const apiURL = 'http://tagshop.co/api/'
 
 const getOptions = (token, method = 'GET', body = null) => {
 	return {
 		method,
 		headers: {
-			'Content-Type': 'application/json',
-			Authorization: 'Bearer ' + token
+			//'Content-Type': 'application/json'
+			//Authorization: 'Bearer ' + token
+			//Access-Control-Allow-Origin
 		},
 		body: body && JSON.stringify(body)
 	}
