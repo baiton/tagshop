@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import '../css/product_card.css'
+
 
 
 export default class Product_Card extends Component {
