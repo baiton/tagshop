@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import history from './history'
-import Home from './pages/Home'
+import Home from './pages/home'
 import UserStore from './pages/UserStore'
 
 const App = () => {

@@ -15,6 +15,6 @@ export const getUser = user => (dispatch, getState) => {
 		fetch(apiURL + 'ig/media/' + user, getOptions(getState()))
 			.then(res => res.json())
 			.then(data => dispatch({ type: SET_USER, payload: data }))
-			.catch(err => console.log(err))
+			// .catch(err => console.log(err))
 	}
 }
