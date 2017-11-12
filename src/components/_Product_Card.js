@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
 
 const Product_Card = props => {
-	console.log('card props', props)
-
 	let imageStyle = {
 		backgroundImage: `url("${props.images}")`,
 		backgroundSize: 'cover',
@@ -22,9 +20,11 @@ const Product_Card = props => {
 		borderRadius: '100%'
 	}
 
-	console.log('profile pic', props.profile_picture)
 	return (
-		<div className="mdc-layout-grid__cell mdc-card demo-card demo-card--with-avatar">
+		<div
+			className="mdc-layout-grid__cell mdc-card demo-card demo-card--with-avatar"
+			key={props.media_id}
+		>
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
 				<div className="ma2" style={profileStyle} alt="" />
@@ -41,16 +41,14 @@ const Product_Card = props => {
 				</details>
 			</section>
 			<section className="mdc-card__actions flex justify-around">
-				<Link to={'https://tagshop.co/cart'}>
-					<button
-						className="mdc-button mdc-button--raised mdc-card__action"
-						onClick={e => {
-							e.preventDefault, props.handleCart(props)
-						}}
-					>
-						Buy
-					</button>
-				</Link>
+				<button
+					className="mdc-button mdc-button--raised mdc-card__action"
+					onClick={e => {
+						e.preventDefault, props.handleCart(props)
+					}}
+				>
+					Buy
+				</button>
 				<p className="">${props.price}</p>
 			</section>
 		</div>

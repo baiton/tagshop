@@ -13,25 +13,27 @@ class Home extends React.Component {
 		const props = this.props
 		const userName = this.props.location.pathname.substring(1)
 		return (
-			<div className="avenir wrapper">
-				<div>
-						<img
-							id="tsBanner"
-							className="flex center"
-							src="http://tagshop.co/assets/media/tagshop_objects.png"
-							alt="TagShop"
-						/>
+			<div className="avenir">
+				<div className="flex justify-between">
+					<div>
+						<button
+							className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
+							onClick={props.handleBack}
+						>
+							Back
+						</button>
+					</div>
+					<img
+						id="logo"
+						src="http://tagshop.co/assets/media/brand250.png"
+						alt="TagShop"
+					/>
+					<Link to="/cart">
+						<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+							Cart
+						</button>
+					</Link>
 				</div>
-				<h2 className="pl2">Is {userName} your userName?</h2>
-				<div className="pl2">
-					<a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
-						Yes
-					</a>
-					<a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
-						No
-					</a>
-				</div>
-				<Product_Card />
 			</div>
 		)
 	}
@@ -50,7 +52,8 @@ function mapActionsToProps(dispatch) {
 			return e => {
 				doDispatch('SET_USER', null, name)
 			}
-		}
+		},
+		handleBack: e => history.goBack()
 	}
 }
 
