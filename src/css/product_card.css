@@ -1,11 +1,14 @@
 .demo-card {
-  margin: 24px;
-  width: 250px;
+	margin: 24px;
+	width: 250px;
 }
 
-.mdc-card__media{
+.mdc-card__media {
 }
 
-.user-label{
-  margin-top: 17px;
+.user-label {
+	margin-top: 17px;
+}
+.oswald {
+	font-family: 'Oswald', sans-serif;
 }

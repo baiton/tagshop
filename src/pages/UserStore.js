@@ -19,7 +19,7 @@ class UserStore extends React.Component {
 		const userName = this.props.location.pathname.substring(1)
 		return (
 			<div>
-				{props.user.user && (
+				{pathOr(null, ['user', 'user', 'media'], props) && (
 					<div className="avenir">
 						<div className="flex justify-between">
 							<Link to="/">
@@ -60,9 +60,8 @@ class UserStore extends React.Component {
 						</div>
 					</div>
 				)}
-				{!props.user.user && (
+				{!pathOr('', ['user', 'user', 'media'], props) && (
 					<h1 className="tc">
-						{' '}
 						You do not have any tagged photos with #tagshop and a #$(amount).
 						tag photos to see them here{' '}
 					</h1>

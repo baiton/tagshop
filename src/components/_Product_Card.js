@@ -28,7 +28,7 @@ const Product_Card = props => {
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
 				<div className="ma2" style={profileStyle} alt="" />
-				<h1 className="mdc-card__title user-label">{props.username}</h1>
+				<h1 className="oswald mdc-card__title user-label">{props.username}</h1>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"
@@ -49,7 +49,7 @@ const Product_Card = props => {
 				>
 					Buy
 				</button>
-				<p className="">${props.price}</p>
+				<p className="oswald">${props.price}</p>
 			</section>
 		</div>
 	)
