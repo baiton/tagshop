@@ -1,5 +1,6 @@
 .wrapper{
   margin-top: 20px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -7,4 +8,30 @@
 #tsBanner{
   width: 681px;
   height: 130px;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-input{
+  box-shadow: 0 0 10px rgb(255, 0, 138);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+}
+
+.ts-subtitle{
+  width: 250px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  margin: 25px 25px 0px 25px;
+}
+
+.instantly{
+  color: rgb(255, 0, 138);
 }
