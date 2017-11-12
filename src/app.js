@@ -7,17 +7,17 @@ import UserStore from './pages/UserStore'
 import Cart from './pages/cart'
 
 const App = () => {
-  return (
-    <BrowserRouter history={history}>
-      <div>
-        <Switch>
-          <Route path="/store/cart" component={Cart} />
-          <Route path="/:username" component={UserStore} />
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  )
+	return (
+		<BrowserRouter history={history}>
+			<div>
+				<Switch>
+					<Route path="/cart" component={Cart} />
+					<Route path="/:username" component={UserStore} />
+					<Route exact path="/" component={Home} />
+				</Switch>
+			</div>
+		</BrowserRouter>
+	)
 }
 
 export default App
