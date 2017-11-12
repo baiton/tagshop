@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@material/button": "^0.24.0",
 		"@material/card": "^0.24.0",
 		"@material/grid-list": "^0.24.0",
 		"@material/layout-grid": "^0.24.0",
