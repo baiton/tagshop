@@ -1,6 +1,7 @@
 import history from '../history'
 import '../css/userstore.css'
 import Product_Card from '../components/_Product_Card.js'
+const loading = require('../loading.svg')
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { List, ListItem, Button } = require('t63')
@@ -53,19 +54,27 @@ class UserStore extends React.Component {
 							</div>
 						</section>
 						<div className="card-wrapper">
-							{compose(
+							{
+								compose(
 								map(Product_Card),
 								map(assoc('handleCart', this.props.handleCart))
-							)(pathOr([], ['user', 'user', 'media'], props))}
+							)(pathOr([], ['user', 'user', 'media'], props))
+						}
 						</div>
 					</div>
 				)}
-				{!pathOr('', ['user', 'user', 'media'], props) && (
+				{pathOr('', ['user', 'user', 'loginUrl'], props) && (
 					<h1 className="tc">
 						You do not have any tagged photos with #tagshop and a #$(amount).
 						tag photos to see them here{' '}
 					</h1>
 				)}
+				{!pathOr('', ['user', 'user', 'media'], props) && (
+					<div id="custom-loader-container">
+						<img id="custom-loader" src={loading}/>
+					</div>
+				)
+				}
 			</div>
 		)
 	}
