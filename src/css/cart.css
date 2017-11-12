@@ -1,13 +1,18 @@
 nav h4 {
-  text-align: center;
-  text-decoration: underline;
+	text-align: center;
+	text-decoration: underline;
 }
 
 .description {
-  text-align: left;
-  margin-left: 2rem;
+	text-align: left;
+	margin-left: 2rem;
 }
 
-.entire-cart{
-  
+.entire-cart {
+}
+
+.abs-center {
+	position: relative !important;
+	left: 50% !important;
+	transform: translate(-50%, 50%) !important;
 }

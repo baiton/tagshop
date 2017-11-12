@@ -42,7 +42,10 @@ class UserStore extends React.Component {
 						<section className="wrapper">
 							<h2 className="f4 ma0">Are you {userName}?</h2>
 							<div className="pl2 user-buttons">
-								<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+								<a
+									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
+									onClick={this.props.handleUserVerificationYes}
+								>
 									Yes
 								</a>
 								<a
@@ -101,7 +104,7 @@ function mapActionsToProps(dispatch) {
 			window.alert(
 				'Please DM this artist and let them know to update their shipping information in order to purchase this product'
 			),
-		handleUserVerificationYes: e => history.replace('')
+		handleUserVerificationYes: e => history.replace('/verify')
 	}
 }
 

@@ -1,6 +1,6 @@
 import history from '../history'
 import Item from '../components/_Item'
-import _Product_Card from '../components/_Product_Card'
+import TakeMoney from '../components/_Stripe_Checkout'
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { List, ListItem, Button, TextField } = require('t63')
@@ -46,9 +46,7 @@ class Cart extends React.Component {
 						map(assoc('array', props))
 					)(props.cart)}
 				</div>
-				<div className="tc">
-					<a className="mdc-button mdc-button--raised"> Purchase </a>
-				</div>
+				<TakeMoney />
 			</div>
 		)
 	}

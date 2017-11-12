@@ -11,7 +11,7 @@ const App = () => {
 		<BrowserRouter history={history}>
 			<div>
 				<Switch>
-					<Route path="/verify" component={Verify}>
+					<Route path="/verify" component={Verify} />
 					<Route path="/cart" component={Cart} />
 					<Route path="/:username" component={UserStore} />
 					<Route exact path="/" component={Home} />
