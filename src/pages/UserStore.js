@@ -70,7 +70,7 @@ class UserStore extends React.Component {
 						</h1>
 					</div>
 				)}
-				{!pathOr('', ['user', 'user', 'loginUrl'], props) && pathOr(null, ['user', 'user', 'media'], props) && (
+				{!pathOr('', ['user', 'user', 'loginUrl'], props) && !pathOr(null, ['user', 'user', 'media'], props) && (
 					<div id="custom-loader-container">
 						<img id="custom-loader" src={loading} />
 					</div>
