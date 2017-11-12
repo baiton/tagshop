@@ -1,4 +1,10 @@
 .wrapper{
+  margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+#tsBanner{
+  width: 681px;
+  height: 130px;
 }
