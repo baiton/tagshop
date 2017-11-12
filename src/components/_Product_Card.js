@@ -2,6 +2,7 @@ import React from 'react'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
 import Snack from './_Snackbar'
+import { SET_AMOUNT } from '../constants'
 
 const Product_Card = props => {
 	console.log('props', props)
@@ -49,7 +50,11 @@ const Product_Card = props => {
 							className="mdc-button mdc-button--raised mdc-card__action"
 							onClick={e => {
 								e.preventDefault()
-								props.handleCart(props)
+								props.handleCart(props),
+									props.dispatch({
+										type: SET_AMOUNT,
+										payload: props.price
+									})
 							}}
 						>
 							Buy

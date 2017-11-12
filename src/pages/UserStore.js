@@ -59,6 +59,7 @@ class UserStore extends React.Component {
 						<div className="card-wrapper">
 							{compose(
 								map(Product_Card),
+								map(assoc('dispatch', this.props.dispatch)),
 								map(assoc('handleCart', this.props.handleCart))
 							)(pathOr([], ['user', 'user', 'media'], props))}
 						</div>

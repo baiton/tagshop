@@ -30,13 +30,13 @@ class Cart extends React.Component {
 						src="http://tagshop.co/assets/media/brand250.png"
 						alt="TagShop"
 					/>
-					<Link to="/cart">
+					<Link to="/">
 						<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
-							Cart
+							Home
 						</button>
 					</Link>
 				</div>
-				<section className="wrapper">
+				<section className="flex justify-center">
 					<h2>Your Cart</h2>
 				</section>
 				<div className="card-wrapper">
