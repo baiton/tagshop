@@ -33,10 +33,11 @@ const Item = props => {
 			<section className="mdc-card__actions flex justify-around">
 				<button
 					className="mdc-button mdc-button--raised mdc-card__action"
+					id={props.media_id}
 					onClick={e => {
 						props.dispatch({
 							type: CLEAR_CART,
-							payload: props.array
+							payload: { cartObj: props.array, id: props.media_id }
 						})
 					}}
 				>
