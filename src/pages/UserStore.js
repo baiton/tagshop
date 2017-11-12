@@ -67,14 +67,19 @@ class UserStore extends React.Component {
 				)}
 				{pathOr('', ['user', 'user', 'loginUrl'], props) && (
 					<div className="flex flex-column items-center">
-						<img id="logo" src="http://tagshop.co/assets/media/brand250.png" alt="TagShop"/>
+						<img
+							id="logo"
+							src="http://tagshop.co/assets/media/brand250.png"
+							alt="TagShop"
+						/>
 						<h1 className="tc st-noTags">
-							You do not have any tagged photos with #tagshop and a #(amount).
-							tag photos to see them here{' '}
+							You have not tagged any photos yet.<br />Tag them with #Tagshop
+							$(amount)
 						</h1>
 					</div>
 				)}
-				{!pathOr('', ['user', 'user', 'loginUrl'], props) && !pathOr(null, ['user', 'user', 'media'], props) && (
+				{!pathOr('', ['user', 'user', 'loginUrl'], props) &&
+				!pathOr(null, ['user', 'user', 'media'], props) && (
 					<div id="custom-loader-container">
 						<img id="custom-loader" src={loading} />
 					</div>
