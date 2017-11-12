@@ -3,7 +3,8 @@ const { combineReducers } = require('redux')
 const { merge, append } = require('ramda')
 
 export default combineReducers({
-	user
+	user,
+	cart
 })
 
 function user(state = {}, action) {
@@ -16,9 +17,10 @@ function user(state = {}, action) {
 }
 
 function cart(state = [], action) {
+	console.log('action.payload', action.payload)
 	switch (action.type) {
 		case SET_CART:
-			return append(state, { cart: [action.payload] })
+			return append(action.payload, state)
 		default:
 			return state
 	}

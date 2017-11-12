@@ -7,18 +7,16 @@ const { List, ListItem, Button } = require('t63')
 const { connect } = require('react-redux')
 const { SET_USER } = require('../constants')
 const { getUser } = require('../db.js')
-const { map, pathOr } = require('ramda')
+const { map, pathOr, assoc, compose } = require('ramda')
 
 class UserStore extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
-		console.log('props', this.props)
 	}
 
 	render() {
 		const props = this.props
 		const userName = this.props.location.pathname.substring(1)
-		console.log('props', props)
 		return (
 			<div className="avenir">
 				<div>
@@ -44,7 +42,11 @@ class UserStore extends React.Component {
 					</div>
 				</section>
 				<div className="card-wrapper">
-					{map(Product_Card, pathOr([], ['media'], props.user.user))}
+					{compose(
+						map(Product_Card),
+						map(assoc('dispatch', this.props.dispatch)),
+						map(assoc('handleCart', this.props.handleCart))
+					)(pathOr([], ['user', 'user', 'media'], props))}
 				</div>
 			</div>
 		)
@@ -65,6 +67,13 @@ function mapActionsToProps(dispatch) {
 				doDispatch('SET_USER', null, name)
 			}
 		},
+		handleCart: post => {
+			console.log('post', post)
+			dispatch({
+				type: 'SET_CART',
+				payload: post
+			})
+		},
 		handleUserVerificationNo: e =>
 			window.alert(
 				'Please DM this artist and let them know to update their shipping information in order to purchase this product'
@@ -75,7 +84,8 @@ function mapActionsToProps(dispatch) {
 
 const mapStateToProps = state => {
 	return {
-		user: state.user
+		user: state.user,
+		cart: state.cart
 	}
 }
 
