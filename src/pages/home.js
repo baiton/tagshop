@@ -15,12 +15,12 @@ class Home extends React.Component {
 		return (
 			<div className="avenir wrapper">
 				<div>
-					<header className="flex flex-row justify-between items-center h3 pa2">
-						<h1 className="tc f2">Tagshop</h1>
-						<a className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-blue">
-							Login with Instagram
-						</a>
-					</header>
+						<img
+							id="tsBanner"
+							className="flex center"
+							src="http://tagshop.co/assets/media/tagshop_objects.png"
+							alt="TagShop"
+						/>
 				</div>
 				<h2 className="pl2">Is {userName} your userName?</h2>
 				<div className="pl2">
