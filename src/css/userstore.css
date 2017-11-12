@@ -18,3 +18,9 @@
   height: 150px;
   width: 150px;
 }
+
+#custom-loader-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
