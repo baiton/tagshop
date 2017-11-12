@@ -1,6 +1,6 @@
 const { SET_USER, SET_CART } = require('./constants')
 const { combineReducers } = require('redux')
-const { merge } = require('ramda')
+const { merge, append } = require('ramda')
 
 export default combineReducers({
 	user
@@ -9,16 +9,16 @@ export default combineReducers({
 function user(state = {}, action) {
 	switch (action.type) {
 		case SET_USER:
-			return merge(state, {user: action.payload})
+			return merge(state, { user: action.payload })
 		default:
 			return state
 	}
 }
 
-function cart(state = '', action) {
+function cart(state = [], action) {
 	switch (action.type) {
 		case SET_CART:
-			return action.payload
+			return append(state, { cart: [action.payload] })
 		default:
 			return state
 	}
