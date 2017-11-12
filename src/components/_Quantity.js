@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Items extends Component {
   render() {
     return (
-      <div className="tc">
+      <div className="">
         <div className="mdc-select " role="listbox" tabIndex="0">
           <span className="mdc-select__selected-text">1</span>
           <div className="mdc-simple-menu mdc-select__menu">
