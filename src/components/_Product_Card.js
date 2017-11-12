@@ -1,8 +1,10 @@
 import React from 'react'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
+import Snack from './_Snackbar'
 
 const Product_Card = props => {
+	console.log('props', props)
 	let imageStyle = {
 		backgroundImage: `url("${props.images}")`,
 		backgroundSize: 'cover',
@@ -41,14 +43,19 @@ const Product_Card = props => {
 				</details>
 			</section>
 			<section className="mdc-card__actions flex justify-around">
-				<button
-					className="mdc-button mdc-button--raised mdc-card__action"
-					onClick={e => {
-						e.preventDefault, props.handleCart(props)
-					}}
-				>
-					Buy
-				</button>
+				<div>
+					{
+						<button
+							className="mdc-button mdc-button--raised mdc-card__action"
+							onClick={e => {
+								e.preventDefault()
+								props.handleCart(props)
+							}}
+						>
+							Buy
+						</button>
+					}
+				</div>
 				<p className="oswald">${props.price}</p>
 			</section>
 		</div>

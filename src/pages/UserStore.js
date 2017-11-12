@@ -54,12 +54,10 @@ class UserStore extends React.Component {
 							</div>
 						</section>
 						<div className="card-wrapper">
-							{
-								compose(
+							{compose(
 								map(Product_Card),
 								map(assoc('handleCart', this.props.handleCart))
-							)(pathOr([], ['user', 'user', 'media'], props))
-						}
+							)(pathOr([], ['user', 'user', 'media'], props))}
 						</div>
 					</div>
 				)}
@@ -71,10 +69,9 @@ class UserStore extends React.Component {
 				)}
 				{!pathOr('', ['user', 'user', 'media'], props) && (
 					<div id="custom-loader-container">
-						<img id="custom-loader" src={loading}/>
+						<img id="custom-loader" src={loading} />
 					</div>
-				)
-				}
+				)}
 			</div>
 		)
 	}
@@ -95,7 +92,6 @@ function mapActionsToProps(dispatch) {
 			}
 		},
 		handleCart: post => {
-			console.log('post', post)
 			dispatch({
 				type: 'SET_CART',
 				payload: post
