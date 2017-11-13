@@ -39,42 +39,48 @@ class UserStore extends React.Component {
 								</a>
 							</Link>
 						</div>
-						<section className="wrapper">
-							<h2 className="f4 ma0">Are you {userName}?</h2>
-							<div className="pl2 user-buttons">
-								<a
-									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
-									onClick={this.props.handleUserVerificationYes}
-								>
-									Yes
-								</a>
-								<a
-									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
-									onClick={this.props.handleUserVerificationNo}
-								>
-									No
-								</a>
-							</div>
-						</section>
+						<section className="wrapper" />
 						<div className="card-wrapper">
-							{compose(
-								map(Product_Card),
-								map(assoc('dispatch', this.props.dispatch)),
-								map(assoc('handleCart', this.props.handleCart))
-							)(pathOr([], ['user', 'user', 'media'], props))}
+							{
+								(console.log('cart', this.props.cart),
+								compose(
+									map(Product_Card),
+									map(assoc('cart', this.props.cart)),
+									map(assoc('dispatch', this.props.dispatch)),
+									map(assoc('handleCart', this.props.handleCart))
+								)(pathOr([], ['user', 'user', 'media'], props)))
+							}
 						</div>
 					</div>
 				)}
 				{pathOr('', ['user', 'user', 'loginUrl'], props) && (
-					<div className="flex flex-column items-center">
-						<img
-							id="logo"
-							src="http://tagshop.co/assets/media/brand250.png"
-							alt="TagShop"
-						/>
-						<h1 className="tc st-noTags">
+					<div>
+						<div className="flex fustify-around mp3 pv2">
+							<div>
+								<Link to="/">
+									<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+										Home
+									</a>
+								</Link>
+							</div>
+							<div className="center">
+								<img
+									id="logo"
+									src="http://tagshop.co/assets/media/brand250.png"
+									alt="TagShop"
+								/>
+							</div>
+							<div>
+								<Link to="/cart">
+									<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+										Cart
+									</a>
+								</Link>
+							</div>
+						</div>
+						<h1 className="tc st-noTagsflex flex-column items-center">
 							You have not tagged any photos yet.<br />Tag them with #Tagshop
-							$(amount)
+							and $(amount)
 						</h1>
 					</div>
 				)}

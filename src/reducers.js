@@ -4,7 +4,8 @@ const {
 	CLEAR_CART,
 	SET_EMAIL,
 	SET_INSTA,
-	SET_AMOUNT
+	CLEAR_INSTA,
+	CLEAR_EMAIL
 } = require('./constants')
 const { combineReducers } = require('redux')
 const {
@@ -24,8 +25,7 @@ export default combineReducers({
 	user,
 	cart,
 	email,
-	insta,
-	amount
+	insta
 })
 
 function user(state = {}, action) {
@@ -55,25 +55,21 @@ function cart(state = [], action) {
 function email(state = {}, action) {
 	switch (action.type) {
 		case SET_EMAIL:
-			return merge(state, { email: action.payload })
+			return action.payload
+		case CLEAR_EMAIL:
+			return ''
 		default:
 			return state
 	}
 }
 
 function insta(state = {}, action) {
+	console.log('insta')
 	switch (action.type) {
 		case SET_INSTA:
-			return merge(state, { insta: action.payload })
-		default:
-			return state
-	}
-}
-
-function amount(state = {}, action) {
-	switch (action.type) {
-		case SET_AMOUNT:
-			return state + action.payload
+			return action.payload
+		case CLEAR_INSTA:
+			return ''
 		default:
 			return state
 	}

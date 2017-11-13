@@ -8,7 +8,7 @@ import Cart from './pages/cart'
 
 const App = () => {
 	return (
-		<BrowserRouter history={history}>
+		<BrowserRouter>
 			<div>
 				<Switch>
 					<Route path="/verify" component={Verify} />

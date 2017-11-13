@@ -5,9 +5,15 @@ const { TextField } = require('t63')
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { connect } = require('react-redux')
+const { pathOr } = require('ramda')
+const { CLEAR_INSTA } = require('../constants')
 
 class Home extends React.Component {
-	componentDidMount() {}
+	componentDidMount() {
+		this.props.dispatch({
+			type: CLEAR_INSTA
+		})
+	}
 
 	render() {
 		const props = this.props
@@ -32,26 +38,18 @@ class Home extends React.Component {
 						<h2 className="flex justify-center mt0 instantly">INSTANTLY!</h2>
 					</div>
 					<div className="custom-input">
-						<form>
+						<form onSubmit={props.handleInsta(props.handleInsta)}>
 							<label>Instagram Username</label>
 							<TextField
 								hintText="Username"
 								floatingLabelText="Instagram Username"
 								value={props.InstaUser}
-								onChange={props.handleInsta}
-							/>
-							<br />
-							<label>Email Address</label>
-							<TextField
-								hintText="Email"
-								floatingLabelText="Email"
-								value={props.Email}
-								onChange={props.handleEmail}
+								onChange={props.handleInsta(props.handleInsta)}
 							/>
 							<br />
 						</form>
 						<Link to={'/' + props.InstaUser}>
-							<a class="f6 link dim ba ph3 pv2 mb2 dib black">Submit</a>
+							<a className="f6 link dim ba ph3 pv2 mb2 dib black">Submit</a>
 						</Link>
 					</div>
 				</section>
@@ -67,14 +65,14 @@ function mapActionsToProps(dispatch) {
 	}
 	return {
 		dispatch,
-		handleInsta: e => doDispatch('SET_INSTA', e.target.value),
+		handleInsta: e => e => doDispatch('SET_INSTA', e.target.value),
 		handleEmail: e => doDispatch('SET_EMAIL', e.target.value)
 	}
 }
 
 const mapStateToProps = state => {
 	console.log('state', state)
-	return { InstaUser: state.insta.insta, Email: state.email.email }
+	return { InstaUser: state.insta, Email: state.email.email }
 }
 
 const connector = connect(mapStateToProps, mapActionsToProps)

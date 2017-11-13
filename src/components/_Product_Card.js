@@ -2,10 +2,10 @@ import React from 'react'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
 import Snack from './_Snackbar'
-import { SET_AMOUNT } from '../constants'
+const { contains, pathOr, map, equals } = require('ramda')
 
 const Product_Card = props => {
-	console.log('props', props)
+	console.log('Product props', props)
 	let imageStyle = {
 		backgroundImage: `url("${props.images}")`,
 		backgroundSize: 'cover',
@@ -45,21 +45,24 @@ const Product_Card = props => {
 			</section>
 			<section className="mdc-card__actions flex justify-around">
 				<div>
-					{
+					{!props.media_id == map(x => x.media_id, props.cart) && (
 						<button
 							className="mdc-button mdc-button--raised mdc-card__action"
 							onClick={e => {
 								e.preventDefault()
-								props.handleCart(props),
-									props.dispatch({
-										type: SET_AMOUNT,
-										payload: props.price
-									})
+								props.handleCart(props)
 							}}
 						>
 							Buy
 						</button>
-					}
+					)}
+					{props.media_id == map(x => x.media_id, props.cart) && (
+						<Link to="/cart">
+							<button className="mdc-button mdc-button--raised mdc-card__action">
+								View Cart
+							</button>
+						</Link>
+					)}
 				</div>
 				<p className="oswald">${props.price}</p>
 			</section>
