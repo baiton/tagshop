@@ -29,9 +29,14 @@ const Item = props => {
 				<a
 					href={'https://instagram.com/' + props.username}
 					target="_blank"
-					style={{ cursor: 'default' }}
+					style={{ cursor: 'default !important' }}
 				>
-					{props.username}
+					<h2
+						className="oswald mdc-card__title user-label"
+						style={{ cursor: 'pointer' }}
+					>
+						{props.username}
+					</h2>
 				</a>
 			</section>
 			<section
