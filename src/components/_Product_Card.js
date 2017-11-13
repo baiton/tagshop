@@ -31,14 +31,18 @@ const Product_Card = props => {
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
 				<div className="ma2" style={profileStyle} alt="" />
-				<h1 className="oswald mdc-card__title user-label">{props.username}</h1>
+				<a href={'https://instagram.com/' + props.username} target="_blank">
+					<h1 className="oswald mdc-card__title user-label">
+						{props.username}
+					</h1>
+				</a>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"
 				style={imageStyle}
 			/>
 			<section className="mdc-card__supporting-text">
-				<details>
+				<details style={{ cursor: 'pointer' }}>
 					<summary>Description</summary>
 					<p>{props.description}</p>
 				</details>

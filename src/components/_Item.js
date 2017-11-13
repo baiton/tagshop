@@ -10,42 +10,59 @@ const Item = props => {
 		height: '250px',
 		width: '250px'
 	}
-
+	let profileStyle = {
+		backgroundImage: `url("${props.profile_picture}")`,
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+		height: '50px',
+		width: '50px',
+		borderRadius: '100%'
+	}
 	return (
 		<div
 			className="mdc-layout-grid__cell mdc-card demo-card demo-card--with-avatar"
 			key={props.media_id}
 		>
-			<section className="mdc-card__primary">
+			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
-				<h1 className="mdc-card__title">{props.username}</h1>
+				<div className="ma2" style={profileStyle} />
+				<a
+					href={'https://instagram.com/' + props.username}
+					target="_blank"
+					style={{ cursor: 'default' }}
+				>
+					{props.username}
+				</a>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"
 				style={imageStyle}
 			/>
 			<section className="mdc-card__supporting-text">
-				<details>
+				<details style={{ cursor: 'pointer' }}>
 					<summary>Description</summary>
 					<p>{props.description}</p>
 				</details>
 			</section>
 			<section className="mdc-card__actions flex justify-around">
-				<button
-					className="mdc-button mdc-button--raised mdc-card__action"
-					id={props.media_id}
-					onClick={e => {
-						props.dispatch({
-							type: CLEAR_CART,
-							payload: { cartObj: props.array, id: props.media_id }
-						})
-					}}
-				>
-					Delete
-				</button>
-				<p className="">${props.price}</p>
+				<div>
+					<button
+						className="mdc-button mdc-button--raised mdc-card__action"
+						id={props.media_id}
+						onClick={e => {
+							props.dispatch({
+								type: CLEAR_CART,
+								payload: { cartObj: props.array, id: props.media_id }
+							})
+						}}
+					>
+						Remove
+					</button>
+				</div>
+				<p className="oswald">${props.price}</p>
 			</section>
 		</div>
 	)
 }
+
 export default Item
