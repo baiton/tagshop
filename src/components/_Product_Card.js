@@ -2,10 +2,16 @@ import React from 'react'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
 import Snack from './_Snackbar'
-import { SET_AMOUNT } from '../constants'
+const { contains, pathOr, map, equals } = require('ramda')
 
 const Product_Card = props => {
-	console.log('props', props)
+	console.log('buy button', props.media_id !== map(x => x.media_id, props.cart))
+	console.log(
+		'view cart button',
+		props.media_id == map(x => x.media_id, props.cart)
+	)
+	console.log('y', map(x => x, map(x => x.media_id, props.cart)))
+
 	let imageStyle = {
 		backgroundImage: `url("${props.images}")`,
 		backgroundSize: 'cover',
@@ -31,35 +37,48 @@ const Product_Card = props => {
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
 				<div className="ma2" style={profileStyle} alt="" />
-				<h1 className="oswald mdc-card__title user-label">{props.username}</h1>
+				<a href={'https://instagram.com/' + props.username} target="_blank">
+					<h1 className="oswald mdc-card__title user-label">
+						{props.username}
+					</h1>
+				</a>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"
 				style={imageStyle}
 			/>
 			<section className="mdc-card__supporting-text">
-				<details>
+				<details style={{ cursor: 'pointer' }}>
 					<summary>Description</summary>
 					<p>{props.description}</p>
 				</details>
 			</section>
 			<section className="mdc-card__actions flex justify-around">
 				<div>
-					{
+					{!contains(
+						props.media_id,
+						map(x => x, map(x => x.media_id, props.cart))
+					) && (
 						<button
 							className="mdc-button mdc-button--raised mdc-card__action"
 							onClick={e => {
 								e.preventDefault()
-								props.handleCart(props),
-									props.dispatch({
-										type: SET_AMOUNT,
-										payload: props.price
-									})
+								props.handleCart(props)
 							}}
 						>
 							Buy
 						</button>
-					}
+					)}
+					{contains(
+						props.media_id,
+						map(x => x, map(x => x.media_id, props.cart))
+					) && (
+						<Link to="/cart">
+							<button className="mdc-button mdc-button--raised mdc-card__action">
+								View Cart
+							</button>
+						</Link>
+					)}
 				</div>
 				<p className="oswald">${props.price}</p>
 			</section>

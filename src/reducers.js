@@ -1,11 +1,12 @@
 const {
   SET_USER,
+  CLEAR_USER,
   SET_CART,
   CLEAR_CART,
-  CLEAR_CART_X,
   SET_EMAIL,
   SET_INSTA,
-  SET_AMOUNT
+  CLEAR_INSTA,
+  CLEAR_EMAIL
 } = require('./constants')
 const { combineReducers } = require('redux')
 const {
@@ -25,21 +26,21 @@ export default combineReducers({
   user,
   cart,
   email,
-  insta,
-  amount
+  insta
 })
 
 function user(state = {}, action) {
   switch (action.type) {
     case SET_USER:
       return merge(state, { user: action.payload })
+    case CLEAR_USER:
+      return {}
     default:
       return state
   }
 }
 
 function cart(state = [], action) {
-  console.log('action.payload cart', action.payload)
   switch (action.type) {
     case SET_CART:
       return append(action.payload, state)
@@ -48,8 +49,6 @@ function cart(state = [], action) {
         action.payload.cartObj.cart
       )
       return remove(idx, 1, action.payload.cartObj.cart)
-    case CLEAR_CART_X:
-      return []
     default:
       return state
   }
@@ -58,7 +57,9 @@ function cart(state = [], action) {
 function email(state = {}, action) {
   switch (action.type) {
     case SET_EMAIL:
-      return merge(state, { email: action.payload })
+      return action.payload
+    case CLEAR_EMAIL:
+      return ''
     default:
       return state
   }
@@ -67,16 +68,9 @@ function email(state = {}, action) {
 function insta(state = {}, action) {
   switch (action.type) {
     case SET_INSTA:
-      return merge(state, { insta: action.payload })
-    default:
-      return state
-  }
-}
-
-function amount(state = {}, action) {
-  switch (action.type) {
-    case SET_AMOUNT:
-      return state + action.payload
+      return action.payload
+    case CLEAR_INSTA:
+      return ''
     default:
       return state
   }
