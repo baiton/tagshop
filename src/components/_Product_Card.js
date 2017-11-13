@@ -5,13 +5,6 @@ import Snack from './_Snackbar'
 const { contains, pathOr, map, equals } = require('ramda')
 
 const Product_Card = props => {
-	console.log('buy button', props.media_id !== map(x => x.media_id, props.cart))
-	console.log(
-		'view cart button',
-		props.media_id == map(x => x.media_id, props.cart)
-	)
-	console.log('y', map(x => x, map(x => x.media_id, props.cart)))
-
 	let imageStyle = {
 		backgroundImage: `url("${props.images}")`,
 		backgroundSize: 'cover',

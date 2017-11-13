@@ -10,45 +10,75 @@ const { getUser } = require('../db.js')
 const { map, pathOr, compose, assoc } = require('ramda')
 
 class Cart extends React.Component {
-	componentDidMount() {}
-
 	render() {
 		const props = this.props
+		console.log('cart', props)
 		return (
-			<div className="avenir">
-				<div className="flex justify-between">
+			<div>
+				{!(props.cart <= []) && (
 					<div>
-						<button
-							className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
-							onClick={props.handleBack}
-						>
-							Back
-						</button>
+						<div className="flex justify-between">
+							<div>
+								<button
+									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
+									onClick={props.handleBack}
+								>
+									Back
+								</button>
+							</div>
+							<img
+								id="logo"
+								src="http://tagshop.co/assets/media/brand250.png"
+								alt="TagShop"
+							/>
+							<div>
+								<Link to="/">
+									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+										Home
+									</button>
+								</Link>
+							</div>
+						</div>
+						<section className="flex justify-center">
+							<h2>Your Cart</h2>
+						</section>
+						<div className="card-wrapper">
+							{compose(
+								map(Item),
+								map(assoc('dispatch', props.dispatch)),
+								map(assoc('array', props))
+							)(props.cart)}
+						</div>
+						<TakeMoney />
 					</div>
-					<img
-						id="logo"
-						src="http://tagshop.co/assets/media/brand250.png"
-						alt="TagShop"
-					/>
+				)}
+				{props.cart <= [] && (
 					<div>
-						<Link to="/">
-							<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
-								Home
-							</button>
-						</Link>
+						<div className="flex justify-between">
+							<div>
+								<button
+									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
+									onClick={props.handleBack}
+								>
+									Back
+								</button>
+							</div>
+							<img
+								id="logo"
+								src="http://tagshop.co/assets/media/brand250.png"
+								alt="TagShop"
+							/>
+							<div>
+								<Link to="/">
+									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+										Home
+									</button>
+								</Link>
+							</div>
+						</div>
+						<h1>You have no Items in your cart</h1>
 					</div>
-				</div>
-				<section className="flex justify-center">
-					<h2>Your Cart</h2>
-				</section>
-				<div className="card-wrapper">
-					{compose(
-						map(Item),
-						map(assoc('dispatch', props.dispatch)),
-						map(assoc('array', props))
-					)(props.cart)}
-				</div>
-				<TakeMoney />
+				)}
 			</div>
 		)
 	}
