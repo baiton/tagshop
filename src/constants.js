@@ -1,6 +1,7 @@
 export const SET_USER = 'SET_USER'
 export const SET_CART = 'SET_CART'
 export const CLEAR_CART = 'CLEAR_CART'
+export const CLEAR_CART_X = 'CLEAR_CART_X'
 export const SET_INSTA = 'SET_INSTA'
 export const SET_EMAIL = 'SET_EMAIL'
 export const SET_AMOUNT = 'SET_AMOUNT'

@@ -11,117 +11,97 @@ const { getUser } = require('../db.js')
 const { map, pathOr, assoc, compose } = require('ramda')
 
 class UserStore extends React.Component {
-	componentDidMount() {
-		this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
-	}
+  componentDidMount() {
+    this.props.dispatch(getUser(this.props.location.pathname.substring(1)))
+  }
 
-	render() {
-		const props = this.props
-		const userName = this.props.location.pathname.substring(1)
-		return (
-			<div>
-				{pathOr(null, ['user', 'user', 'media'], props) && (
-					<div className="avenir">
-						<div className="flex justify-between">
-							<Link to="/">
-								<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
-									Home
-								</a>
-							</Link>
-							<img
-								id="logo"
-								src="http://tagshop.co/assets/media/brand250.png"
-								alt="TagShop"
-							/>
-							<Link to="/cart">
-								<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
-									Cart
-								</a>
-							</Link>
-						</div>
-						<section className="wrapper">
-							<h2 className="f4 ma0">Are you {userName}?</h2>
-							<div className="pl2 user-buttons">
-								<a
-									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
-									onClick={this.props.handleUserVerificationYes}
-								>
-									Yes
-								</a>
-								<a
-									className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue"
-									onClick={this.props.handleUserVerificationNo}
-								>
-									No
-								</a>
-							</div>
-						</section>
-						<div className="card-wrapper">
-							{compose(
-								map(Product_Card),
-								map(assoc('dispatch', this.props.dispatch)),
-								map(assoc('handleCart', this.props.handleCart))
-							)(pathOr([], ['user', 'user', 'media'], props))}
-						</div>
-					</div>
-				)}
-				{pathOr('', ['user', 'user', 'loginUrl'], props) && (
-					<div className="flex flex-column items-center">
-						<img
-							id="logo"
-							src="http://tagshop.co/assets/media/brand250.png"
-							alt="TagShop"
-						/>
-						<h1 className="tc st-noTags">
-							You have not tagged any photos yet.<br />Tag them with #Tagshop
-							$(amount)
-						</h1>
-					</div>
-				)}
-				{!pathOr('', ['user', 'user', 'loginUrl'], props) &&
-				!pathOr(null, ['user', 'user', 'media'], props) && (
-					<div id="custom-loader-container">
-						<img id="custom-loader" src={loading} />
-					</div>
-				)}
-			</div>
-		)
-	}
+  render() {
+    const props = this.props
+    const userName = this.props.location.pathname.substring(1)
+    return (
+      <div>
+        {pathOr(null, ['user', 'user', 'media'], props) && (
+          <div className="avenir">
+            <div className="flex justify-between">
+              <Link to="/">
+                <a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+                  Home
+                </a>
+              </Link>
+              <img
+                id="logo"
+                src="http://tagshop.co/assets/media/brand250.png"
+                alt="TagShop"
+              />
+              <Link to="/cart">
+                <a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+                  Cart
+                </a>
+              </Link>
+            </div>
+            <section className="wrapper">
+              <h2 className="f4 ma0">Are you {userName}?</h2>
+            </section>
+            <div className="card-wrapper">
+              {compose(
+                map(Product_Card),
+                map(assoc('dispatch', this.props.dispatch)),
+                map(assoc('handleCart', this.props.handleCart))
+              )(pathOr([], ['user', 'user', 'media'], props))}
+            </div>
+          </div>
+        )}
+        {!pathOr(null, ['user', 'user', 'media'], props) && (
+          <div className="flex flex-column items-center">
+            <img
+              id="logo"
+              src="http://tagshop.co/assets/media/brand250.png"
+              alt="TagShop"
+            />
+            <h1 className="tc st-noTags">
+              You have not tagged any photos yet.<br />Tag them with #Tagshop
+              $(amount)
+            </h1>
+          </div>
+        )}
+      </div>
+    )
+  }
 }
 
 function mapActionsToProps(dispatch) {
-	const doDispatch = (type, field, value) => {
-		dispatch({
-			type: type + field,
-			payload: value
-		})
-	}
-	return {
-		dispatch,
-		handleUser: name => {
-			return e => {
-				doDispatch('SET_USER', null, name)
-			}
-		},
-		handleCart: post => {
-			dispatch({
-				type: 'SET_CART',
-				payload: post
-			})
-		},
-		handleUserVerificationNo: e =>
-			window.alert(
-				'Please DM this artist and let them know to update their shipping information in order to purchase this product'
-			),
-		handleUserVerificationYes: e => history.replace('/verify')
-	}
+  const doDispatch = (type, field, value) => {
+    dispatch({
+      type: type + field,
+      payload: value
+    })
+  }
+  return {
+    dispatch,
+    handleUser: name => {
+      return e => {
+        doDispatch('SET_USER', null, name)
+      }
+    },
+    handleCart: post => {
+      dispatch({
+        type: 'SET_CART',
+        payload: post
+      })
+    },
+    handleUserVerificationNo: e =>
+      window.alert(
+        'Please DM this artist and let them know to update their shipping information in order to purchase this product'
+      ),
+    handleUserVerificationYes: e => history.replace('/verify')
+  }
 }
 
 const mapStateToProps = state => {
-	return {
-		user: state.user,
-		cart: state.cart
-	}
+  return {
+    user: state.user,
+    cart: state.cart
+  }
 }
 
 const connector = connect(mapStateToProps, mapActionsToProps)
