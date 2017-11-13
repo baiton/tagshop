@@ -41,15 +41,12 @@ class UserStore extends React.Component {
 						</div>
 						<section className="wrapper" />
 						<div className="card-wrapper">
-							{
-								(console.log('cart', this.props.cart),
-								compose(
-									map(Product_Card),
-									map(assoc('cart', this.props.cart)),
-									map(assoc('dispatch', this.props.dispatch)),
-									map(assoc('handleCart', this.props.handleCart))
-								)(pathOr([], ['user', 'user', 'media'], props)))
-							}
+							{compose(
+								map(Product_Card),
+								map(assoc('cart', this.props.cart)),
+								map(assoc('dispatch', this.props.dispatch)),
+								map(assoc('handleCart', this.props.handleCart))
+							)(pathOr([], ['user', 'user', 'media'], props))}
 						</div>
 					</div>
 				)}

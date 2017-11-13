@@ -1,5 +1,6 @@
 const {
 	SET_USER,
+	CLEAR_USER,
 	SET_CART,
 	CLEAR_CART,
 	SET_EMAIL,
@@ -32,13 +33,14 @@ function user(state = {}, action) {
 	switch (action.type) {
 		case SET_USER:
 			return merge(state, { user: action.payload })
+		case CLEAR_USER:
+			return {}
 		default:
 			return state
 	}
 }
 
 function cart(state = [], action) {
-	console.log('action.payload cart', action.payload)
 	switch (action.type) {
 		case SET_CART:
 			return append(action.payload, state)
@@ -64,7 +66,6 @@ function email(state = {}, action) {
 }
 
 function insta(state = {}, action) {
-	console.log('insta')
 	switch (action.type) {
 		case SET_INSTA:
 			return action.payload

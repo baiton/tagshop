@@ -5,7 +5,13 @@ import Snack from './_Snackbar'
 const { contains, pathOr, map, equals } = require('ramda')
 
 const Product_Card = props => {
-	console.log('Product props', props)
+	console.log('buy button', props.media_id !== map(x => x.media_id, props.cart))
+	console.log(
+		'view cart button',
+		props.media_id == map(x => x.media_id, props.cart)
+	)
+	console.log('y', map(x => x, map(x => x.media_id, props.cart)))
+
 	let imageStyle = {
 		backgroundImage: `url("${props.images}")`,
 		backgroundSize: 'cover',
@@ -49,7 +55,10 @@ const Product_Card = props => {
 			</section>
 			<section className="mdc-card__actions flex justify-around">
 				<div>
-					{!props.media_id == map(x => x.media_id, props.cart) && (
+					{!contains(
+						props.media_id,
+						map(x => x, map(x => x.media_id, props.cart))
+					) && (
 						<button
 							className="mdc-button mdc-button--raised mdc-card__action"
 							onClick={e => {
@@ -60,7 +69,10 @@ const Product_Card = props => {
 							Buy
 						</button>
 					)}
-					{props.media_id == map(x => x.media_id, props.cart) && (
+					{contains(
+						props.media_id,
+						map(x => x, map(x => x.media_id, props.cart))
+					) && (
 						<Link to="/cart">
 							<button className="mdc-button mdc-button--raised mdc-card__action">
 								View Cart

@@ -6,12 +6,15 @@ const React = require('react')
 const { Link } = require('react-router-dom')
 const { connect } = require('react-redux')
 const { pathOr } = require('ramda')
-const { CLEAR_INSTA } = require('../constants')
+const { CLEAR_INSTA, CLEAR_USER } = require('../constants')
 
 class Home extends React.Component {
 	componentDidMount() {
 		this.props.dispatch({
 			type: CLEAR_INSTA
+		})
+		this.props.dispatch({
+			type: CLEAR_USER
 		})
 	}
 
@@ -60,7 +63,6 @@ class Home extends React.Component {
 
 function mapActionsToProps(dispatch) {
 	const doDispatch = (type, value) => {
-		console.log(value)
 		dispatch({ type: type, payload: value })
 	}
 	return {
@@ -71,7 +73,6 @@ function mapActionsToProps(dispatch) {
 }
 
 const mapStateToProps = state => {
-	console.log('state', state)
 	return { InstaUser: state.insta, Email: state.email.email }
 }
 
