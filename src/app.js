@@ -10,7 +10,7 @@ const App = () => {
 		<BrowserRouter>
 			<div>
 				<Switch>
-					<Route path="/verify" component={Verify} />
+					<Route path="/:username/verify" component={Verify} />
 					<Route path="/cart" component={Cart} />
 					<Route path="/:username" component={UserStore} />
 					<Route exact path="/" component={Home} />
