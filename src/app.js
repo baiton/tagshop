@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import history from './history'
 import Home from './pages/home'
 import Verify from './pages/verify'
 import UserStore from './pages/UserStore'

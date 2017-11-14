@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import _Quantity from '../components/_Quantity'
+import React from 'react'
 import { CLEAR_CART } from '../constants'
 
 const Item = props => {
@@ -26,18 +25,15 @@ const Item = props => {
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
 				<div className="ma2" style={profileStyle} />
-				<a
-					href={'https://instagram.com/' + props.username}
-					target="_blank"
-					style={{ cursor: 'default !important' }}
-				>
-					<h2
-						className="oswald mdc-card__title user-label"
-						style={{ cursor: 'pointer' }}
+				<section>
+					<a
+						href={'https://instagram.com/' + props.username}
+						target="_blank"
+						className="oswald mdc-card__title user-label dib v-mid"
 					>
 						{props.username}
-					</h2>
-				</a>
+					</a>
+				</section>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"
@@ -64,7 +60,9 @@ const Item = props => {
 						Remove
 					</button>
 				</div>
-				<p className="oswald">${props.price}</p>
+				<p className="oswald" style={{ cursor: 'default' }}>
+					${props.price}
+				</p>
 			</section>
 		</div>
 	)

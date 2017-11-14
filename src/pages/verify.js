@@ -22,6 +22,7 @@ function Verify(props) {
 					>
 						<img
 							src="http://library.austintexas.gov/sites/default/files/instagram-logo-white.png"
+							alt=""
 							className="dib h2 w2"
 							fill="currentColor"
 						/>
@@ -29,10 +30,7 @@ function Verify(props) {
 					</a>
 					<div className="tc mb2">
 						<p>
-							By authorizing, you agree to our{' '}
-							<a className="link " href="#">
-								Terms & Conditions
-							</a>
+							By authorizing, you agree to our <a>Terms & Conditions</a>
 						</p>
 					</div>
 				</div>
@@ -42,6 +40,6 @@ function Verify(props) {
 	)
 }
 
-// const connector = connect(mapStateToProps, mapActionsToProps)
+const connector = connect()
 
-export default Verify
+export default connector(Verify)

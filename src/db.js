@@ -10,13 +10,13 @@ const getOptions = (token, method = 'GET', body = null) => {
 	}
 }
 
-const sendOptions = (token, method = 'POST', body = null) => {
-	return {
-		method,
-		headers: {},
-		body: body && JSON.stringify(body)
-	}
-}
+// const sendOptions = (token, method = 'POST', body = null) => {
+// 	return {
+// 		method,
+// 		headers: {},
+// 		body: body && JSON.stringify(body)
+// 	}
+// }
 
 export const getUser = user => (dispatch, getState) => {
 	if (user.length > 0) {

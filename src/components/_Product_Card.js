@@ -1,8 +1,7 @@
 import React from 'react'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
-import Snack from './_Snackbar'
-const { contains, pathOr, map, equals } = require('ramda')
+const { contains, map } = require('ramda')
 
 const Product_Card = props => {
 	let imageStyle = {
@@ -30,11 +29,15 @@ const Product_Card = props => {
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
 				<div className="ma2" style={profileStyle} alt="" />
-				<a href={'https://instagram.com/' + props.username} target="_blank">
-					<h1 className="oswald mdc-card__title user-label">
+				<section>
+					<a
+						href={'https://instagram.com/' + props.username}
+						target="_blank"
+						className="oswald mdc-card__title user-label dib v-mid"
+					>
 						{props.username}
-					</h1>
-				</a>
+					</a>
+				</section>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"
@@ -73,7 +76,9 @@ const Product_Card = props => {
 						</Link>
 					)}
 				</div>
-				<p className="oswald">${props.price}</p>
+				<p className="oswald" style={{ cursor: 'default' }}>
+					${props.price}
+				</p>
 			</section>
 		</div>
 	)
