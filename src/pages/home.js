@@ -33,20 +33,18 @@ class Home extends React.Component {
 						<h2 className="flex justify-center mt0 instantly">INSTANTLY!</h2>
 					</div>
 					<div className="custom-input">
-						<form>
-							<label>Instagram Username</label>
-							<TextField
-								value={props.InstaUser}
-								onChange={props.handleInsta(props.handleInsta)}
-							/>
-							<br />
-							<label>Email</label>
-							<TextField
-								value={props.Email}
-								onChange={props.handleEmail(props.handleEmail)}
-							/>
-							<br />
-						</form>
+						<label>Instagram Username</label>
+						<TextField
+							value={props.InstaUser}
+							onChange={props.handleInsta(props.handleInsta)}
+						/>
+						<br />
+						<label>Email</label>
+						<TextField
+							value={props.Email}
+							onChange={props.handleEmail(props.handleEmail)}
+						/>
+						<br />
 						<a
 							className="f6 link dim ba ph3 pv2 mb2 dib black"
 							href={'/' + props.InstaUser}
