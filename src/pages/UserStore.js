@@ -1,12 +1,13 @@
 import history from '../history'
 import '../css/userstore.css'
 import Product_Card from '../components/_Product_Card.js'
+import { MDCSnackbar } from '@material/snackbar'
 const loading = require('../loading.svg')
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { connect } = require('react-redux')
 const { getUser } = require('../db.js')
-const { map, pathOr, assoc, compose } = require('ramda')
+const { map, pathOr, assoc, compose, is } = require('ramda')
 
 class UserStore extends React.Component {
 	componentDidMount() {
@@ -17,7 +18,8 @@ class UserStore extends React.Component {
 		const props = this.props
 		return (
 			<div>
-				{pathOr(null, ['user', 'user', 'media'], props) && (
+				{pathOr(null, ['user', 'user', 'media'], props) &&
+				!is(String, props.user.user.media) && (
 					<div className="avenir">
 						<div className="flex justify-between">
 							<Link to="/">
@@ -47,14 +49,14 @@ class UserStore extends React.Component {
 						</div>
 					</div>
 				)}
-				{pathOr('', ['user', 'user', 'loginUrl'], props) && (
+				{pathOr(null, ['user', 'user', 'loginUrl'], props) && (
 					<div>
 						<div className="flex fustify-around mp3 pv2">
 							<div>
 								<Link to="/">
-									<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
 										Home
-									</a>
+									</button>
 								</Link>
 							</div>
 							<div className="center">
@@ -66,20 +68,51 @@ class UserStore extends React.Component {
 							</div>
 							<div>
 								<Link to="/cart">
-									<a className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
 										Cart
-									</a>
+									</button>
 								</Link>
 							</div>
 						</div>
 						<h1 className="tc st-noTagsflex flex-column items-center">
-							You have not tagged any photos yet.<br />Tag them with #Tagshop
-							and $(amount)
+							You have not tagged any posts yet.<br />Tag them with #Tagshop and
+							$(amount)
 						</h1>
 					</div>
 				)}
-				{!pathOr('', ['user', 'user', 'loginUrl'], props) &&
-				!pathOr(null, ['user', 'user', 'media'], props) && (
+				{is(String, pathOr(null, ['user', 'user', 'media'], props)) && (
+					<div>
+						<div className="flex fustify-around mp3 pv2">
+							<div>
+								<Link to="/">
+									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+										Home
+									</button>
+								</Link>
+							</div>
+							<div className="center">
+								<img
+									id="logo"
+									src="http://tagshop.co/assets/media/brand250.png"
+									alt="TagShop"
+								/>
+							</div>
+							<div>
+								<Link to="/cart">
+									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+										Cart
+									</button>
+								</Link>
+							</div>
+						</div>
+						<h1 className="tc st-noTagsflex flex-column items-center">
+							You have not tagged any posts yet.<br />Tag them with #Tagshop and
+							$(amount)
+						</h1>
+					</div>
+				)}
+				{!pathOr('', ['user', 'user', 'media'], props) &&
+				!pathOr('', ['user', 'user', 'loginUrl'], props) && (
 					<div id="custom-loader-container">
 						<img id="custom-loader" src={loading} alt="loading" />
 					</div>
