@@ -1,34 +1,60 @@
-.card-wrapper{
-  display: flex;
+.card-wrapper {
+  /*display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-around;*/
+  display: table;
+  position: relative;
+  width: 80%;
+  max-width: 80%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  font-size: 0;
+  padding-bottom: 45px;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.user-buttons{
+.user-buttons {
   display: flex;
 }
 
-#logo{
+#logo {
   height: 150px;
   width: 150px;
 }
 
-#custom-loader-container{
+#custom-loader-container {
   position: absolute;
   top: 40%;
   left: 45%;
 }
 
-#custom-loader{
+#custom-loader {
 }
 
-.st-noTags{
-font-family: 'Oswald', sans-serif;
-width: 63%;
+.st-noTags {
+  font-family: 'Oswald', sans-serif;
+  width: 63%;
+}
+
+@media screen and (min-width: 1280px) {
+  .card-wrapper {
+    width: 80%;
+    max-width: 1400px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+}
+
+@media screen and (max-width: 540px) {
+  .card-wrapper {
+    width: 60%;
+    max-width: 60%;
+  }
 }
