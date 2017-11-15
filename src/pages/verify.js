@@ -11,7 +11,6 @@ class Verify extends React.Component {
 	}
 	render() {
 		const props = this.props
-		console.log(props)
 		const userName = props.match.params.username
 		const verifyUrl = pathOr(null, ['user', 'user', 'loginUrl'], props)
 		return (

@@ -3,6 +3,7 @@ const {
 	CLEAR_USER,
 	SET_CART,
 	CLEAR_CART,
+	CLEAR_CART_X,
 	SET_EMAIL,
 	SET_INSTA,
 	CLEAR_INSTA,
@@ -11,7 +12,15 @@ const {
 	SET_VERIFY
 } = require('./constants')
 const { combineReducers } = require('redux')
-const { merge, append, findIndex, propEq, remove } = require('ramda')
+const {
+	merge,
+	append,
+	findIndex,
+	propEq,
+	remove,
+	pathOr,
+	map
+} = require('ramda')
 
 export default combineReducers({
 	user,
