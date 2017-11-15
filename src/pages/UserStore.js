@@ -324,7 +324,6 @@ const mapStateToProps = state => {
   }
 }
 
-
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(UserStore)
