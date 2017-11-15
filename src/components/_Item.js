@@ -3,7 +3,7 @@ import { CLEAR_CART } from '../constants'
 
 const Item = props => {
   let imageStyle = {
-    backgroundImage: `url("${props.images}")`,
+    backgroundImage: `url("${props.images[0]}")`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
