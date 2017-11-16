@@ -2,7 +2,7 @@ import React from 'react'
 import '../css/product_card.css'
 import { Snackbar } from 'material-ui'
 import { Link } from 'react-router-dom'
-const { contains, map, length } = require('ramda')
+const { contains, map } = require('ramda')
 const {
 	CLEAR_CART,
 	SET_ADD_ITEM,
@@ -67,10 +67,12 @@ const Product_Card = props => {
 							<button
 								className="mdc-button mdc-button--raised mdc-card__action"
 								onClick={e => {
-									props.dispatch({
-										type: SET_ADD_ITEM
-									}),
+									props.dispatch(
+										{
+											type: SET_ADD_ITEM
+										},
 										props.handleCart(props)
+									)
 								}}
 							>
 								Buy
@@ -78,8 +80,7 @@ const Product_Card = props => {
 							{
 								//Add Item Snackbar
 							}
-							{length(props.cart) > 0 &&
-							props.addItem && (
+							{props.addItem === true && (
 								<Snackbar
 									open={true}
 									message="An item was added to the cart"

@@ -22,7 +22,6 @@ class UserStore extends React.Component {
 	}
 	render() {
 		const props = this.props
-		console.log('props', props)
 		return (
 			<div>
 				{pathOr(null, ['user', 'user', 'media'], props) &&
@@ -205,7 +204,6 @@ function mapActionsToProps(dispatch) {
 }
 
 const mapStateToProps = state => {
-	console.log('state', state)
 	return {
 		user: state.user,
 		cart: state.cart,

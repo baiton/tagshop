@@ -111,7 +111,6 @@ function addItem(state = false, action) {
 }
 
 function removeItem(state = false, action) {
-	console.log('removeItem', action.type)
 	switch (action.type) {
 		case SET_REMOVE_ITEM:
 			return true
