@@ -37,7 +37,7 @@ class TakeMoney extends React.Component {
 				panelLabel="Pay" // prepended to the amount in the bottom pay button
 				amount={Number(this.props.totalPrice) * 100} // cents
 				currency="USD"
-				shippingAddress={true}
+				//shippingAddress={true}
 			/>
 			//</div>
 		)
