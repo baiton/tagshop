@@ -1,13 +1,19 @@
 import '../css/userstore.css'
 import Product_Card from '../components/_Product_Card.js'
-import history from '../history'
 const loading = require('../images/loading.svg')
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { connect } = require('react-redux')
 const { getUser } = require('../db.js')
 const { map, pathOr, assoc, compose, is } = require('ramda')
-const { SET_VERIFY, SET_BUTTONS, CLEAR_BUTTONS } = require('../constants')
+const {
+	SET_VERIFY,
+	CLEAR_BUTTONS,
+	SET_USER,
+	SET_CART,
+	CLEAR_OPEN,
+	SET_OPEN
+} = require('../constants')
 
 class UserStore extends React.Component {
 	componentDidMount() {
@@ -15,11 +21,14 @@ class UserStore extends React.Component {
 		this.props.dispatch({
 			type: SET_VERIFY
 		})
+		this.props.dispatch({
+			type: CLEAR_OPEN
+		})
 	}
 
 	render() {
 		const props = this.props
-		const userName = props.match.params.username
+		console.log('props in store', props)
 		return (
 			<div>
 				{pathOr(null, ['user', 'user', 'media'], props) &&
@@ -46,9 +55,12 @@ class UserStore extends React.Component {
 						<div className="card-wrapper">
 							{compose(
 								map(Product_Card),
-								map(assoc('cart', this.props.cart)),
-								map(assoc('dispatch', this.props.dispatch)),
-								map(assoc('handleCart', this.props.handleCart))
+								map(assoc('open', props.open)),
+								map(assoc('handleRequestClose', props.handleRequestClose)),
+								map(assoc('handleTouchTap', props.handleTouchTap)),
+								map(assoc('cart', props.cart)),
+								map(assoc('dispatch', props.dispatch)),
+								map(assoc('handleCart', props.handleCart))
 							)(pathOr([], ['user', 'user', 'media'], props))}
 						</div>
 					</div>
@@ -82,10 +94,7 @@ class UserStore extends React.Component {
 						<div className="flex justify-center">
 							<h4 className="oswald">Is this your account?</h4>
 							<div>
-								<button
-									className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma1"
-									onClick={e => history.replace(`${userName}/verify`)}
-								>
+								<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma1">
 									Yes
 								</button>
 							</div>
@@ -189,14 +198,24 @@ function mapActionsToProps(dispatch) {
 	return {
 		dispatch,
 		handleUser: name => {
-			return e => {
-				doDispatch('SET_USER', null, name)
+			return () => {
+				doDispatch(SET_USER, null, name)
 			}
 		},
 		handleCart: post => {
 			dispatch({
-				type: 'SET_CART',
+				type: SET_CART,
 				payload: post
+			})
+		},
+		handleRequestClose: () => {
+			dispatch({
+				type: CLEAR_OPEN
+			})
+		},
+		handleTouchTap: e => {
+			dispatch({
+				type: SET_OPEN
 			})
 		}
 	}
@@ -207,7 +226,8 @@ const mapStateToProps = state => {
 		user: state.user,
 		cart: state.cart,
 		verify: state.verify,
-		buttons: state.buttons
+		buttons: state.buttons,
+		open: state.open
 	}
 }
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import '../css/product_card.css'
+import { Snackbar } from 'material-ui'
 import { Link } from 'react-router-dom'
-const { contains, map } = require('ramda')
+const { contains, map, length } = require('ramda')
 const { CLEAR_CART } = require('../constants')
 
 const Product_Card = props => {
+	console.log('props', props.cart[0])
 	let imageStyle = {
 		backgroundImage: `url("${props.images[0]}")`,
 		backgroundSize: 'cover',
@@ -52,15 +54,28 @@ const Product_Card = props => {
 			<section className="mdc-card__actions">
 				<div>
 					{!contains(props.media_id, map(x => x.media_id, props.cart)) && (
-						<button
-							className="mdc-button mdc-button--raised mdc-card__action"
-							onClick={e => {
-								e.preventDefault()
-								props.handleCart(props)
-							}}
-						>
-							Buy
-						</button>
+						<div>
+							<button
+								className="mdc-button mdc-button--raised mdc-card__action"
+								onClick={e => {
+									props.dispatch({
+										type: 'SET_OPEN'
+									}),
+										props.handleCart(props)
+								}}
+							>
+								Buy
+							</button>
+							{length(props.cart) > 0 &&
+							props.open && (
+								<Snackbar
+									open={true}
+									message="An Item was added to your cart"
+									autoHideDuration={2000}
+									onRequestClose={props.handleRequestClose}
+								/>
+							)}
+						</div>
 					)}
 					{contains(props.media_id, map(x => x.media_id, props.cart)) && (
 						<div className="flex justify-between">

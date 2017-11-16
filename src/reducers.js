@@ -10,7 +10,9 @@ const {
 	CLEAR_VERIFY,
 	SET_VERIFY,
 	SET_BUTTONS,
-	CLEAR_BUTTONS
+	CLEAR_BUTTONS,
+	SET_OPEN,
+	CLEAR_OPEN
 } = require('./constants')
 const { combineReducers } = require('redux')
 const { merge, append, findIndex, propEq, remove } = require('ramda')
@@ -21,7 +23,8 @@ export default combineReducers({
 	email,
 	insta,
 	verify,
-	buttons
+	buttons,
+	open
 })
 
 function user(state = {}, action) {
@@ -87,6 +90,17 @@ function buttons(state = true, action) {
 		case SET_BUTTONS:
 			return true
 		case CLEAR_BUTTONS:
+			return false
+		default:
+			return state
+	}
+}
+
+function open(state = false, action) {
+	switch (action.type) {
+		case SET_OPEN:
+			return true
+		case CLEAR_OPEN:
 			return false
 		default:
 			return state
