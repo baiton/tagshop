@@ -11,8 +11,10 @@ const {
 	SET_VERIFY,
 	SET_BUTTONS,
 	CLEAR_BUTTONS,
-	SET_OPEN,
-	CLEAR_OPEN
+	SET_ADD_ITEM,
+	CLEAR_ADD_ITEM,
+	SET_REMOVE_ITEM,
+	CLEAR_REMOVE_ITEM
 } = require('./constants')
 const { combineReducers } = require('redux')
 const { merge, append, findIndex, propEq, remove } = require('ramda')
@@ -24,7 +26,8 @@ export default combineReducers({
 	insta,
 	verify,
 	buttons,
-	open
+	addItem,
+	removeItem
 })
 
 function user(state = {}, action) {
@@ -96,11 +99,23 @@ function buttons(state = true, action) {
 	}
 }
 
-function open(state = false, action) {
+function addItem(state = false, action) {
 	switch (action.type) {
-		case SET_OPEN:
+		case SET_ADD_ITEM:
 			return true
-		case CLEAR_OPEN:
+		case CLEAR_ADD_ITEM:
+			return false
+		default:
+			return state
+	}
+}
+
+function removeItem(state = false, action) {
+	console.log('removeItem', action.type)
+	switch (action.type) {
+		case SET_REMOVE_ITEM:
+			return true
+		case CLEAR_REMOVE_ITEM:
 			return false
 		default:
 			return state

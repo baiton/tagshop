@@ -10,9 +10,7 @@ const {
 	SET_VERIFY,
 	CLEAR_BUTTONS,
 	SET_USER,
-	SET_CART,
-	CLEAR_OPEN,
-	SET_OPEN
+	SET_CART
 } = require('../constants')
 
 class UserStore extends React.Component {
@@ -21,14 +19,10 @@ class UserStore extends React.Component {
 		this.props.dispatch({
 			type: SET_VERIFY
 		})
-		this.props.dispatch({
-			type: CLEAR_OPEN
-		})
 	}
-
 	render() {
 		const props = this.props
-		console.log('props in store', props)
+		console.log('props', props)
 		return (
 			<div>
 				{pathOr(null, ['user', 'user', 'media'], props) &&
@@ -55,9 +49,8 @@ class UserStore extends React.Component {
 						<div className="card-wrapper">
 							{compose(
 								map(Product_Card),
-								map(assoc('open', props.open)),
-								map(assoc('handleRequestClose', props.handleRequestClose)),
-								map(assoc('handleTouchTap', props.handleTouchTap)),
+								map(assoc('removeItem', props.removeItem)),
+								map(assoc('addItem', props.addItem)),
 								map(assoc('cart', props.cart)),
 								map(assoc('dispatch', props.dispatch)),
 								map(assoc('handleCart', props.handleCart))
@@ -207,27 +200,19 @@ function mapActionsToProps(dispatch) {
 				type: SET_CART,
 				payload: post
 			})
-		},
-		handleRequestClose: () => {
-			dispatch({
-				type: CLEAR_OPEN
-			})
-		},
-		handleTouchTap: e => {
-			dispatch({
-				type: SET_OPEN
-			})
 		}
 	}
 }
 
 const mapStateToProps = state => {
+	console.log('state', state)
 	return {
 		user: state.user,
 		cart: state.cart,
 		verify: state.verify,
 		buttons: state.buttons,
-		open: state.open
+		addItem: state.addItem,
+		removeItem: state.removeItem
 	}
 }
 

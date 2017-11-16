@@ -3,10 +3,16 @@ import '../css/product_card.css'
 import { Snackbar } from 'material-ui'
 import { Link } from 'react-router-dom'
 const { contains, map, length } = require('ramda')
-const { CLEAR_CART } = require('../constants')
+const {
+	CLEAR_CART,
+	SET_ADD_ITEM,
+	CLEAR_ADD_ITEM,
+	SET_REMOVE_ITEM,
+	CLEAR_REMOVE_ITEM
+} = require('../constants')
 
 const Product_Card = props => {
-	console.log('props', props.cart[0])
+	console.log('products', props)
 	let imageStyle = {
 		backgroundImage: `url("${props.images[0]}")`,
 		backgroundSize: 'cover',
@@ -53,30 +59,42 @@ const Product_Card = props => {
 			</section>
 			<section className="mdc-card__actions">
 				<div>
+					{
+						//Buy Button
+					}
 					{!contains(props.media_id, map(x => x.media_id, props.cart)) && (
 						<div>
 							<button
 								className="mdc-button mdc-button--raised mdc-card__action"
 								onClick={e => {
 									props.dispatch({
-										type: 'SET_OPEN'
+										type: SET_ADD_ITEM
 									}),
 										props.handleCart(props)
 								}}
 							>
 								Buy
 							</button>
+							{
+								//Add Item Snackbar
+							}
 							{length(props.cart) > 0 &&
-							props.open && (
+							props.addItem && (
 								<Snackbar
 									open={true}
-									message="An Item was added to your cart"
+									message="An item was added to the cart"
 									autoHideDuration={2000}
-									onRequestClose={props.handleRequestClose}
+									onRequestClose={e =>
+										props.dispatch({
+											type: CLEAR_ADD_ITEM
+										})}
 								/>
 							)}
 						</div>
 					)}
+					{
+						//Cart Button
+					}
 					{contains(props.media_id, map(x => x.media_id, props.cart)) && (
 						<div className="flex justify-between">
 							<Link to="/cart">
@@ -88,7 +106,6 @@ const Product_Card = props => {
 								<a
 									className="red pa2 fr"
 									style={{ cursor: 'default' }}
-									//Use Snackbars later
 									onClick={e => {
 										props.dispatch({
 											type: CLEAR_CART,
