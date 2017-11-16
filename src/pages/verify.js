@@ -1,7 +1,6 @@
 const React = require('react')
 const { connect } = require('react-redux')
 const { Link } = require('react-router-dom')
-const { SET_USER } = require('../constants')
 const { getUser } = require('../db.js')
 const { pathOr } = require('ramda')
 
@@ -20,7 +19,7 @@ class Verify extends React.Component {
 						<div className="flex justify-between">
 							<section>
 								<Link to={'/' + userName}>
-									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 										Back
 									</button>
 								</Link>
@@ -32,7 +31,7 @@ class Verify extends React.Component {
 							/>
 							<section>
 								<Link to="/">
-									<button className="f6 link dim br-pill ph3 pv2 ma2 dib white bg-blue">
+									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 										Home
 									</button>
 								</Link>
@@ -42,7 +41,7 @@ class Verify extends React.Component {
 							<div className="dtc-ns tc pa4" />
 							<div className="dtc-ns tc h7 pv4 bg-black-05 br3">
 								<a
-									className="no-underline near-white bg-animate bg-blue hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
+									className="no-underline near-white bg-animates bg-blue hover-bg-dark-pink inline-flex items-center ma2 tc br2 pa2"
 									href={verifyUrl}
 									target="_blank"
 									title="Instagram"

@@ -3,31 +3,25 @@ const {
 	CLEAR_USER,
 	SET_CART,
 	CLEAR_CART,
-	CLEAR_CART_X,
 	SET_EMAIL,
 	SET_INSTA,
 	CLEAR_INSTA,
 	CLEAR_EMAIL,
 	CLEAR_VERIFY,
-	SET_VERIFY
+	SET_VERIFY,
+	SET_BUTTONS,
+	CLEAR_BUTTONS
 } = require('./constants')
 const { combineReducers } = require('redux')
-const {
-	merge,
-	append,
-	findIndex,
-	propEq,
-	remove,
-	pathOr,
-	map
-} = require('ramda')
+const { merge, append, findIndex, propEq, remove } = require('ramda')
 
 export default combineReducers({
 	user,
 	cart,
 	email,
 	insta,
-	verify
+	verify,
+	buttons
 })
 
 function user(state = {}, action) {
@@ -77,11 +71,22 @@ function insta(state = '', action) {
 	}
 }
 
-function verify(state = true, action) {
+function verify(state = '', action) {
 	switch (action.type) {
 		case SET_VERIFY:
 			return true
 		case CLEAR_VERIFY:
+			return false
+		default:
+			return state
+	}
+}
+
+function buttons(state = true, action) {
+	switch (action.type) {
+		case SET_BUTTONS:
+			return true
+		case CLEAR_BUTTONS:
 			return false
 		default:
 			return state
