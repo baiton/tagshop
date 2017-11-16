@@ -1,3 +1,4 @@
+import history from '../history'
 const React = require('react')
 const { connect } = require('react-redux')
 const { Link } = require('react-router-dom')
@@ -18,11 +19,12 @@ class Verify extends React.Component {
 					<div className="oswald">
 						<div className="flex justify-between">
 							<section>
-								<Link to={'/' + userName}>
-									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
-										Back
-									</button>
-								</Link>
+								<button
+									className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2"
+									onClick={e => history.replace('/' + userName)}
+								>
+									Back
+								</button>
 							</section>
 							<img
 								className="flex center"

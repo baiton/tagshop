@@ -1,5 +1,6 @@
 import '../css/userstore.css'
 import Product_Card from '../components/_Product_Card.js'
+import history from '../history'
 const loading = require('../images/loading.svg')
 const React = require('react')
 const { Link } = require('react-router-dom')
@@ -13,9 +14,6 @@ class UserStore extends React.Component {
 		this.props.dispatch(getUser(this.props.match.params.username))
 		this.props.dispatch({
 			type: SET_VERIFY
-		})
-		this.props.dispatch({
-			type: SET_BUTTONS
 		})
 	}
 
@@ -83,11 +81,14 @@ class UserStore extends React.Component {
 						</div>
 						<div className="flex justify-center">
 							<h4 className="oswald">Is this your account?</h4>
-							<Link to={userName + '/verify'} className="dib v-mid">
-								<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma1">
+							<div>
+								<button
+									className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma1"
+									onClick={e => history.replace(`${userName}/verify`)}
+								>
 									Yes
 								</button>
-							</Link>
+							</div>
 							<div>
 								<button
 									className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma1"
