@@ -2,7 +2,7 @@ import React from 'react'
 import '../css/product_card.css'
 import { Snackbar } from 'material-ui'
 import { Link } from 'react-router-dom'
-const { contains, map } = require('ramda')
+const { contains, map, pathOr } = require('ramda')
 const {
 	CLEAR_CART,
 	SET_ADD_ITEM,
@@ -80,11 +80,12 @@ const Product_Card = props => {
 							{
 								//Add Item Snackbar
 							}
-							{props.addItem === true && (
+							{props.addItem === true &&
+							pathOr(null, ['cart'], props) && (
 								<Snackbar
 									open={true}
 									message="An item was added to the cart"
-									autoHideDuration={2000}
+									autoHideDuration={3000}
 									onRequestClose={e =>
 										props.dispatch({
 											type: CLEAR_ADD_ITEM

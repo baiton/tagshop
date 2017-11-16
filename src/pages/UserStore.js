@@ -5,7 +5,7 @@ const React = require('react')
 const { Link } = require('react-router-dom')
 const { connect } = require('react-redux')
 const { getUser } = require('../db.js')
-const { map, pathOr, assoc, compose, is } = require('ramda')
+const { map, pathOr, assoc, compose, is, length } = require('ramda')
 const {
 	SET_VERIFY,
 	CLEAR_BUTTONS,
@@ -40,7 +40,8 @@ class UserStore extends React.Component {
 							/>
 							<Link to="/cart">
 								<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
-									Cart
+									{length(props.cart) === 0 && 'Cart'}
+									{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
 								</button>
 							</Link>
 						</div>
@@ -78,7 +79,8 @@ class UserStore extends React.Component {
 							<div>
 								<Link to="/cart">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
-										Cart
+										{length(props.cart) === 0 && 'Cart'}
+										{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
 									</button>
 								</Link>
 							</div>
@@ -128,7 +130,8 @@ class UserStore extends React.Component {
 							<div>
 								<Link to="/cart">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
-										Cart
+										{length(props.cart) === 0 && 'Cart'}
+										{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
 									</button>
 								</Link>
 							</div>
@@ -159,7 +162,8 @@ class UserStore extends React.Component {
 							<div>
 								<Link to="/cart">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
-										Cart
+										{length(props.cart) === 0 && 'Cart'}
+										{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
 									</button>
 								</Link>
 							</div>
