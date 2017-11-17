@@ -41,7 +41,7 @@ class UserStore extends React.Component {
 							<Link to="/cart">
 								<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 									{length(props.cart) === 0 && 'Cart'}
-									{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
+									{length(props.cart) > 0 && `Cart (${length(props.cart)})`}
 								</button>
 							</Link>
 						</div>
@@ -80,7 +80,7 @@ class UserStore extends React.Component {
 								<Link to="/cart">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 										{length(props.cart) === 0 && 'Cart'}
-										{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
+										{length(props.cart) > 0 && `Cart (${length(props.cart)})`}
 									</button>
 								</Link>
 							</div>
@@ -131,7 +131,7 @@ class UserStore extends React.Component {
 								<Link to="/cart">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 										{length(props.cart) === 0 && 'Cart'}
-										{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
+										{length(props.cart) > 0 && `Cart (${length(props.cart)})`}
 									</button>
 								</Link>
 							</div>
@@ -163,7 +163,7 @@ class UserStore extends React.Component {
 								<Link to="/cart">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 										{length(props.cart) === 0 && 'Cart'}
-										{length(props.cart) > 0 && 'Cart ' + length(props.cart)}
+										{length(props.cart) > 0 && `Cart (${length(props.cart)})`}
 									</button>
 								</Link>
 							</div>

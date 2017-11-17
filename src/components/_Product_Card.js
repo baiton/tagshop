@@ -67,12 +67,10 @@ const Product_Card = props => {
 							<button
 								className="mdc-button mdc-button--raised mdc-card__action"
 								onClick={e => {
-									props.dispatch(
-										{
-											type: SET_ADD_ITEM
-										},
-										props.handleCart(props)
-									)
+									props.handleCart(props)
+									props.dispatch({
+										type: SET_ADD_ITEM
+									})
 								}}
 							>
 								Buy
@@ -80,18 +78,15 @@ const Product_Card = props => {
 							{
 								//Add Item Snackbar
 							}
-							{props.addItem === true &&
-							pathOr(null, ['cart'], props) && (
-								<Snackbar
-									open={true}
-									message="An item was added to the cart"
-									autoHideDuration={3000}
-									onRequestClose={e =>
-										props.dispatch({
-											type: CLEAR_ADD_ITEM
-										})}
-								/>
-							)}
+							<Snackbar
+								open={props.addItem}
+								message="An item was added to the cart"
+								autoHideDuration={3000}
+								onRequestClose={e =>
+									props.dispatch({
+										type: CLEAR_ADD_ITEM
+									})}
+							/>
 						</div>
 					)}
 					{
