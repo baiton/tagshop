@@ -2,8 +2,9 @@ import React from 'react'
 import '../css/product_card.css'
 import { Snackbar } from 'material-ui'
 import { Link } from 'react-router-dom'
-const { contains, map, pathOr } = require('ramda')
+const { contains, map } = require('ramda')
 const {
+	SET_CART,
 	CLEAR_CART,
 	SET_ADD_ITEM,
 	CLEAR_ADD_ITEM,
@@ -67,7 +68,10 @@ const Product_Card = props => {
 							<button
 								className="mdc-button mdc-button--raised mdc-card__action"
 								onClick={e => {
-									props.handleCart(props)
+									props.dispatch({
+										type: SET_CART,
+										payload: props
+									})
 									props.dispatch({
 										type: SET_ADD_ITEM
 									})
@@ -81,7 +85,7 @@ const Product_Card = props => {
 							<Snackbar
 								open={props.addItem}
 								message="An item was added to the cart"
-								autoHideDuration={3000}
+								autoHideDuration={2500}
 								onRequestClose={e =>
 									props.dispatch({
 										type: CLEAR_ADD_ITEM
