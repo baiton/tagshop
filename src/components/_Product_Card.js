@@ -13,7 +13,7 @@ const {
 } = require('../constants')
 
 const Product_Card = props => {
-	console.log('products', props)
+	console.log('SET_ADD_ITEM', props.addItem)
 	let imageStyle = {
 		backgroundImage: `url("${props.images[0]}")`,
 		backgroundSize: 'cover',
@@ -72,16 +72,16 @@ const Product_Card = props => {
 										type: SET_CART,
 										payload: props
 									})
+									console.log('hello')
 									props.dispatch({
 										type: SET_ADD_ITEM
 									})
+									console.log('bye')
+									console.log(props.addItem)
 								}}
 							>
 								Buy
 							</button>
-							{
-								//Add Item Snackbar
-							}
 							<Snackbar
 								open={props.addItem}
 								message="An item was added to the cart"
@@ -93,9 +93,7 @@ const Product_Card = props => {
 							/>
 						</div>
 					)}
-					{
-						//Cart Button
-					}
+
 					{contains(props.media_id, map(x => x.media_id, props.cart)) && (
 						<div className="flex justify-between">
 							<Link to="/cart">
@@ -111,6 +109,9 @@ const Product_Card = props => {
 										props.dispatch({
 											type: CLEAR_CART,
 											payload: { cartObj: props, id: props.media_id }
+										})
+										props.dispatch({
+											type: CLEAR_ADD_ITEM
 										})
 									}}
 								>

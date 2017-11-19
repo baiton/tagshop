@@ -20,6 +20,7 @@ class UserStore extends React.Component {
 			type: SET_VERIFY
 		})
 	}
+
 	render() {
 		const props = this.props
 		return (
@@ -49,11 +50,11 @@ class UserStore extends React.Component {
 						<div className="card-wrapper">
 							{compose(
 								map(Product_Card),
+								map(assoc('setState', this.setState)),
 								map(assoc('removeItem', props.removeItem)),
 								map(assoc('addItem', props.addItem)),
 								map(assoc('cart', props.cart)),
-								map(assoc('dispatch', props.dispatch)),
-								map(assoc('handleCart', props.handleCart))
+								map(assoc('dispatch', props.dispatch))
 							)(pathOr([], ['user', 'user', 'media'], props))}
 						</div>
 					</div>
