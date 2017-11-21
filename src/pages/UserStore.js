@@ -62,15 +62,18 @@ class UserStore extends React.Component {
 								{toUpper(props.match.params.username)}
 							</h2>
 							<div className="flex justify-between pr4 pl4 pb3 pt2 white f6">
-								<a className="hover-bg-dark-pink br-pill pa2 pointer ba0">
-									RECENT
-								</a>
-								<a className="hover-bg-dark-pink br-pill pa2 pointer">
-									POPULAR
-								</a>
-								<a className="hover-bg-dark-pink br-pill pa2 pointer">
-									SOLD OUT
-								</a>
+								<FlatButton
+									label="RECENT"
+									style={{ color: 'white', borderRadius: '9999px' }}
+								/>
+								<FlatButton
+									label="POPULAR"
+									style={{ color: 'white', borderRadius: '9999px' }}
+								/>
+								<FlatButton
+									label="SOLD OUT"
+									style={{ color: 'white', borderRadius: '9999px' }}
+								/>
 							</div>
 						</div>
 						<section className="wrapper" />
@@ -87,7 +90,7 @@ class UserStore extends React.Component {
 						<div
 							className="tc"
 							style={{
-								boxShadow: '0px 0px 0px 3px MediumVioletRed',
+								boxShadow: '0px 0px 0px 2px MediumVioletRed',
 								backgroundColor: 'DeepPink',
 								bottom: '0',
 								position: 'fixed',
@@ -106,7 +109,12 @@ class UserStore extends React.Component {
 										alt="CART"
 									/>
 								}
-								iconElementRight={<FlatButton label="Checkout" />}
+								iconElementRight={
+									<FlatButton
+										label="Checkout"
+										style={{ borderRadius: '9999px' }}
+									/>
+								}
 								style={{ backgroundColor: 'DeepPink' }}
 							/>
 						</div>
