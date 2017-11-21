@@ -7,9 +7,7 @@ const {
 	SET_CART,
 	CLEAR_CART,
 	SET_ADD_ITEM,
-	CLEAR_ADD_ITEM,
-	SET_REMOVE_ITEM,
-	CLEAR_REMOVE_ITEM
+	CLEAR_ADD_ITEM
 } = require('../constants')
 
 const Product_Card = props => {
