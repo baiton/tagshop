@@ -1,6 +1,7 @@
 import '../css/userstore.css'
 import Product_Card from '../components/_Product_Card.js'
-import { AppBar, FlatButton } from 'material-ui'
+import { AppBar, FlatButton, Drawer, MenuItem } from 'material-ui'
+import history from '../history'
 const loading = require('../images/loading.svg')
 const React = require('react')
 const { Link } = require('react-router-dom')
@@ -20,10 +21,16 @@ class UserStore extends React.Component {
 		this.props.dispatch({
 			type: SET_VERIFY
 		})
+		this.state = { menuOpen: false }
 	}
+
+	handleToggle = () => this.setState({ menuOpen: true })
+
+	handleClose = () => this.setState({ menuOpen: false })
 
 	render() {
 		const props = this.props
+		console.log('state', this.state)
 		return (
 			<div>
 				{pathOr(null, ['user', 'user', 'media'], props) &&
@@ -57,7 +64,18 @@ class UserStore extends React.Component {
 									height: '65px'
 								}}
 								zDepth="0"
+								onLeftIconButtonTouchTap={this.handleToggle}
 							/>
+							<Drawer
+								open={pathOr('', ['menuOpen'], this.state)}
+								onRequestChange={open => this.setState({ menuOpen: open })}
+								docked={false}
+							>
+								<MenuItem
+									onClick={e => history.replace('/')}
+									primaryText="Home"
+								/>
+							</Drawer>
 							<h2 className="tc white bg-DeepPink ma0 cubano">
 								{toUpper(props.match.params.username)}
 							</h2>
@@ -276,7 +294,7 @@ const mapStateToProps = state => {
 		verify: state.verify,
 		buttons: state.buttons,
 		addItem: state.addItem,
-		removeItem: state.removeItem
+		menuOpen: state.menuOpen
 	}
 }
 
