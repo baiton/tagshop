@@ -11,7 +11,6 @@ const {
 } = require('../constants')
 
 const Product_Card = props => {
-	console.log('SET_ADD_ITEM', props.addItem)
 	let imageStyle = {
 		backgroundImage: `url("${props.images[0]}")`,
 		backgroundSize: 'cover',
@@ -70,12 +69,9 @@ const Product_Card = props => {
 										type: SET_CART,
 										payload: props
 									})
-									console.log('hello')
 									props.dispatch({
 										type: SET_ADD_ITEM
 									})
-									console.log('bye')
-									console.log(props.addItem)
 								}}
 							>
 								Buy

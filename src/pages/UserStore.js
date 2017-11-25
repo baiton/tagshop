@@ -2,6 +2,7 @@ import '../css/userstore.css'
 import Product_Card from '../components/_Product_Card.js'
 import { AppBar, FlatButton, Drawer, MenuItem } from 'material-ui'
 import history from '../history'
+import CartPreview from '../components/_Cart_Preview'
 const loading = require('../images/loading.svg')
 const React = require('react')
 const { Link } = require('react-router-dom')
@@ -21,7 +22,7 @@ class UserStore extends React.Component {
 		this.props.dispatch({
 			type: SET_VERIFY
 		})
-		this.state = { menuOpen: false }
+		this.setState({ menuOpen: false })
 	}
 
 	handleToggle = () => this.setState({ menuOpen: true })
@@ -30,7 +31,6 @@ class UserStore extends React.Component {
 
 	render() {
 		const props = this.props
-		console.log('state', this.state)
 		return (
 			<div>
 				{pathOr(null, ['user', 'user', 'media'], props) &&
@@ -55,7 +55,7 @@ class UserStore extends React.Component {
 												width: '50px',
 												borderWidth: '2px'
 											}}
-											alt="TagShop"
+											alt={loading}
 										/>
 									</div>
 								}
@@ -63,7 +63,7 @@ class UserStore extends React.Component {
 									backgroundColor: 'DeepPink',
 									height: '65px'
 								}}
-								zDepth="0"
+								zDepth={0}
 								onLeftIconButtonTouchTap={this.handleToggle}
 							/>
 							<Drawer
@@ -119,19 +119,14 @@ class UserStore extends React.Component {
 							<AppBar
 								title="#TAGSHOP"
 								className="tc"
-								iconElementLeft={
-									<img
-										height="50"
-										width="50"
-										src="http://stonexindia.net/wp-content/uploads/2017/05/cart_icon_200.png"
-										alt="CART"
-									/>
-								}
+								iconElementLeft={<CartPreview />}
 								iconElementRight={
-									<FlatButton
-										label="Checkout"
-										style={{ borderRadius: '9999px' }}
-									/>
+									<Link to="/cart">
+										<FlatButton
+											label="Checkout"
+											style={{ borderRadius: '9999px', color: 'white' }}
+										/>
+									</Link>
 								}
 								style={{ backgroundColor: 'DeepPink' }}
 							/>

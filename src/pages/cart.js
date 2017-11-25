@@ -1,6 +1,6 @@
-import history from '../history'
 import Item from '../components/_Item'
 import TakeMoney from '../components/_Stripe_Checkout'
+import history from '../history'
 const React = require('react')
 const { Link } = require('react-router-dom')
 const { connect } = require('react-redux')
@@ -18,7 +18,7 @@ class Cart extends React.Component {
 							<div>
 								<button
 									className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2"
-									onClick={props.handleBack}
+									onClick={e => history.goBack()}
 								>
 									Back
 								</button>
@@ -57,7 +57,7 @@ class Cart extends React.Component {
 							<div>
 								<button
 									className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2"
-									onClick={props.handleBack}
+									onClick={e => history.goBack()}
 								>
 									Back
 								</button>
@@ -101,8 +101,7 @@ function mapActionsToProps(dispatch) {
 			return e => {
 				doDispatch(SET_CART, null, name)
 			}
-		},
-		handleBack: e => history.goBack()
+		}
 	}
 }
 
