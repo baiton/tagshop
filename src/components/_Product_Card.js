@@ -1,14 +1,8 @@
 import React from 'react'
 import '../css/product_card.css'
-import { Snackbar } from 'material-ui'
 import { Link } from 'react-router-dom'
 const { contains, map } = require('ramda')
-const {
-	SET_CART,
-	CLEAR_CART,
-	SET_ADD_ITEM,
-	CLEAR_ADD_ITEM
-} = require('../constants')
+const { SET_CART } = require('../constants')
 
 const Product_Card = props => {
 	let imageStyle = {
@@ -69,22 +63,10 @@ const Product_Card = props => {
 										type: SET_CART,
 										payload: props
 									})
-									props.dispatch({
-										type: SET_ADD_ITEM
-									})
 								}}
 							>
 								Buy
 							</button>
-							<Snackbar
-								open={props.addItem}
-								message="An item was added to the cart"
-								autoHideDuration={2500}
-								onRequestClose={e =>
-									props.dispatch({
-										type: CLEAR_ADD_ITEM
-									})}
-							/>
 						</div>
 					)}
 
@@ -95,23 +77,6 @@ const Product_Card = props => {
 									Cart
 								</button>
 							</Link>
-							<div>
-								<a
-									className="red pa2 fr"
-									style={{ cursor: 'default' }}
-									onClick={e => {
-										props.dispatch({
-											type: CLEAR_CART,
-											payload: { cartObj: props, id: props.media_id }
-										})
-										props.dispatch({
-											type: CLEAR_ADD_ITEM
-										})
-									}}
-								>
-									X
-								</a>
-							</div>
 						</div>
 					)}
 				</div>

@@ -1,68 +1,35 @@
 import React from 'react'
-import { CLEAR_CART } from '../constants'
+import { IconMenu, MenuItem, IconButton } from 'material-ui'
+import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
 
 const Item = props => {
-	let imageStyle = {
-		backgroundImage: `url("${props.images}")`,
-		backgroundSize: 'cover',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'center'
-	}
-	let profileStyle = {
-		backgroundImage: `url("${props.profile_picture}")`,
-		backgroundSize: 'cover',
-		backgroundRepeat: 'no-repeat',
-		height: '50px',
-		width: '50px',
-		borderRadius: '100%'
-	}
 	return (
-		<div
-			className="mdc-card demo-card demo-card--with-avatar"
-			key={props.media_id}
-		>
-			<section className="flex mdc-card__primary">
-				<div className="demo-card__avatar" />
-				<div className="ma2" style={profileStyle} />
-				<section>
-					<a
-						href={'https://instagram.com/' + props.username}
-						target="_blank"
-						className="oswald mdc-card__title user-label dib v-mid"
-					>
-						{props.username}
-					</a>
-				</section>
-			</section>
-			<section
-				className="mdc-card__media demo-card__16-9-media"
-				style={imageStyle}
+		<div className="flex oswald">
+			<img
+				className="pa2"
+				style={{
+					height: '40px',
+					width: '40px',
+					borderRadius: '100%',
+					borderWidth: '0px'
+				}}
+				src={props.images[0]}
+				alt={props.images[0]}
 			/>
-			<section className="mdc-card__supporting-text">
-				<details style={{ cursor: 'pointer' }}>
-					<summary>Description</summary>
-					<p>{props.description}</p>
-				</details>
-			</section>
-			<section className="mdc-card__actions flex justify-around">
-				<div>
-					<button
-						className="mdc-button mdc-button--raised mdc-card__action"
-						id={props.media_id}
-						onClick={e => {
-							props.dispatch({
-								type: CLEAR_CART,
-								payload: { cartObj: props.array, id: props.media_id }
-							})
-						}}
-					>
-						Remove
-					</button>
-				</div>
-				<p className="oswald" style={{ cursor: 'default' }}>
-					${props.price}
-				</p>
-			</section>
+			<div className="pr7">
+				<a className="black f6">{props.username}</a>
+				<h2 className="black f6">{'$' + props.price}</h2>
+			</div>
+			<IconMenu
+				iconButtonElement={
+					<IconButton touch={true}>
+						<NavigationExpandMoreIcon />
+					</IconButton>
+				}
+			>
+				<MenuItem primaryText="Download" />
+				<MenuItem primaryText="More Info" />
+			</IconMenu>
 		</div>
 	)
 }

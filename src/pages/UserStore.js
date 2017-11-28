@@ -45,19 +45,18 @@ class UserStore extends React.Component {
 						>
 							<AppBar
 								title={
-									<div>
-										<img
-											id="logo"
-											src={props.user.user.media[0].profile_picture}
-											className="br-100 ba white ma2"
-											style={{
-												height: '50px',
-												width: '50px',
-												borderWidth: '2px'
-											}}
-											alt={loading}
-										/>
-									</div>
+									<img
+										id="logo"
+										src={props.user.user.media[0].profile_picture}
+										className="br-100 ba white ma2"
+										style={{
+											height: '50px',
+											width: '50px',
+											borderWidth: '2px',
+											backgroundColor: 'white'
+										}}
+										alt={loading}
+									/>
 								}
 								style={{
 									backgroundColor: 'DeepPink',
