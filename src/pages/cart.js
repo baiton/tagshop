@@ -1,5 +1,5 @@
 import Item from '../components/_Item'
-import { AppBar, Drawer, MenuItem } from 'material-ui'
+import { AppBar, Drawer, MenuItem, Stepper } from 'material-ui'
 import history from '../history'
 import loading from '../images/loading.svg'
 import tagshop from '../images/tagshop.png'
@@ -27,7 +27,11 @@ class Cart extends React.Component {
 							className="tc"
 							style={{
 								boxShadow: '0px 0px 5px black',
-								backgroundColor: 'DeepPink'
+								backgroundColor: 'DeepPink',
+								position: 'sticky',
+								top: '0',
+								right: '0',
+								left: '0'
 							}}
 						>
 							<AppBar
@@ -53,7 +57,7 @@ class Cart extends React.Component {
 								onLeftIconButtonTouchTap={this.handleToggle}
 							/>
 							<Drawer
-								open={pathOr('', ['menuOpen'], this.state)}
+								open={pathOr(false, ['menuOpen'], this.state)}
 								onRequestChange={open => this.setState({ menuOpen: open })}
 								docked={false}
 							>
@@ -76,25 +80,30 @@ class Cart extends React.Component {
 								map(assoc('array', props))
 							)(props.cart)}
 						</div>
-						<AppBar
-							iconElementLeft={
-								<div
-									className="flex justify-between dib v-mid white"
-									onClick={e => history.goBack()}
-									style={{ cursor: 'pointer' }}
-								>
-									<i className="material-icons">keyboard_arrow_left</i>
-									<h2>Back</h2>
-								</div>
-							}
+						<div
+							className="flex justify-between"
 							style={{
-								backgroundColor: 'DeepPink',
-								bottom: '0',
 								position: 'fixed',
+								bottom: '70px',
 								right: '0',
 								left: '0'
 							}}
-						/>
+						>
+							<a
+								className="pa3 f6 oswald"
+								style={{ color: '#D7D9D0' }}
+								onClick={e => history.goBack()}
+							>
+								Shop
+							</a>
+							<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+								Review Cart
+							</a>
+							<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+								Shipping
+							</a>
+						</div>
+						<Stepper />
 					</div>
 				)}
 				{props.cart <= [] && <CartEmpty />}

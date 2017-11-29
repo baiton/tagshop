@@ -45,7 +45,7 @@ class CartEmpty extends React.Component {
 						onLeftIconButtonTouchTap={this.handleToggle}
 					/>
 					<Drawer
-						open={pathOr('', ['menuOpen'], this.state)}
+						open={pathOr(false, ['menuOpen'], this.state)}
 						onRequestChange={open => this.setState({ menuOpen: open })}
 						docked={false}
 					>
@@ -58,6 +58,21 @@ class CartEmpty extends React.Component {
 						YOU HAVE NOTHING IN YOUR CART. <br /> ADD ITEMS AND THEN COME BACK.
 					</h2>
 				</section>
+				<div
+					className="flex justify-between"
+					style={{ position: 'fixed', bottom: '70px', right: '0', left: '0' }}
+					onClick={e => history.goBack()}
+				>
+					<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+						Shop
+					</a>
+					<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+						Review Cart
+					</a>
+					<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+						Shipping
+					</a>
+				</div>
 				<AppBar
 					iconElementLeft={
 						<div
