@@ -37,12 +37,16 @@ class Home extends React.Component {
 						<TextField
 							value={props.InstaUser}
 							onChange={props.handleInsta(props.handleInsta)}
+							hintText="username"
+							hintStyle={{ right: '37%' }}
 						/>
 						<br />
 						<label>Email</label>
 						<TextField
 							value={props.Email}
 							onChange={props.handleEmail(props.handleEmail)}
+							hintText="email"
+							hintStyle={{ right: '42%' }}
 						/>
 						<br />
 						<a

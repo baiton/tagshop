@@ -4,11 +4,17 @@ import { connect } from 'react-redux'
 import tagshop from '../images/tagshop.png'
 import history from '../history'
 import { SET_DRAWER_TRUE } from '../constants'
+import { toUpper } from 'ramda'
 
 class StoreHeader extends React.Component {
-	componentDidMount() {
-		console.log('props', this.props)
+	constructor(props) {
+		super(props)
+		this.state = { open: false }
 	}
+
+	handleToggle = () => this.setState({ open: !this.state.open })
+
+	handleClose = () => this.setState({ open: false })
 
 	render() {
 		const props = this.props
@@ -36,6 +42,7 @@ class StoreHeader extends React.Component {
 							alt={tagshop}
 						/>
 					}
+					titleStyle={{ margin: '0 auto', display: 'block' }}
 					style={{
 						backgroundColor: 'DeepPink',
 						height: '65px',
@@ -43,23 +50,17 @@ class StoreHeader extends React.Component {
 						top: '0'
 					}}
 					zDepth={0}
-					onLeftIconButtonTouchTap={e =>
-						props.dispatch({
-							type: SET_DRAWER_TRUE
-						})
-					}
+					onLeftIconButtonTouchTap={this.handleToggle}
 				/>
 				<Drawer
-					open={props.drawerStatus}
-					onRequestChange={!props.drawerStatus}
 					docked={false}
+					open={this.state.open}
+					onRequestChange={open => this.setState({ open })}
 				>
 					<MenuItem onClick={e => history.replace('/')} primaryText="Home" />
 				</Drawer>
 				<h2 className="tc white bg-DeepPink ma0 oswald">
-					{
-						//toUpper(props.match.params.username)
-					}
+					{toUpper(props.user.user.media[0].username)}
 				</h2>
 				<div className="flex justify-between pr4 pl4 pb3 pt2 white f6">
 					<FlatButton
