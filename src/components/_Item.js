@@ -28,7 +28,7 @@ const Item = props => {
 				</a>
 			)}
 			<IconMenu
-				maxHeight="100px"
+				maxHeight={100}
 				iconButtonElement={
 					<IconButton touch={true}>
 						<NavigationExpandMoreIcon />

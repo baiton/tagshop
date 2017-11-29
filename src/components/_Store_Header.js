@@ -31,7 +31,7 @@ class StoreHeader extends React.Component {
 					title={
 						<img
 							id="logo"
-							src={tagshop}
+							src={props.user.user.media[0].profile_picture}
 							className="br-100 ba white ma2"
 							style={{
 								height: '50px',

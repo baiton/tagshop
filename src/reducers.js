@@ -14,9 +14,7 @@ const {
 	SET_ADD_ITEM,
 	CLEAR_ADD_ITEM,
 	SET_REMOVE_ITEM,
-	CLEAR_REMOVE_ITEM,
-	SET_DRAWER_TRUE,
-	SET_DRAWER_FALSE
+	CLEAR_REMOVE_ITEM
 } = require('./constants')
 const { combineReducers } = require('redux')
 const { merge, append, findIndex, propEq, remove } = require('ramda')
@@ -29,8 +27,7 @@ export default combineReducers({
 	verify,
 	buttons,
 	addItem,
-	removeItem,
-	drawerStatus
+	removeItem
 })
 
 function user(state = {}, action) {
@@ -118,17 +115,6 @@ function removeItem(state = false, action) {
 		case SET_REMOVE_ITEM:
 			return true
 		case CLEAR_REMOVE_ITEM:
-			return false
-		default:
-			return state
-	}
-}
-
-function drawerStatus(state = false, action) {
-	switch (action.type) {
-		case SET_DRAWER_TRUE:
-			return true
-		case SET_DRAWER_FALSE:
 			return false
 		default:
 			return state

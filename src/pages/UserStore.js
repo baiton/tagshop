@@ -12,8 +12,7 @@ const {
 	SET_VERIFY,
 	CLEAR_BUTTONS,
 	SET_USER,
-	SET_CART,
-	SET_DRAWER_FALSE
+	SET_CART
 } = require('../constants')
 
 class UserStore extends React.Component {
@@ -21,10 +20,6 @@ class UserStore extends React.Component {
 		this.props.dispatch(getUser(this.props.match.params.username))
 		this.props.dispatch({
 			type: SET_VERIFY
-		})
-		this.setState({ menuOpen: false })
-		this.props.dispatch({
-			type: SET_DRAWER_FALSE
 		})
 	}
 
@@ -124,7 +119,7 @@ class UserStore extends React.Component {
 								/>
 							</div>
 							<div>
-								<Link to="/cart">
+								<Link to="/#/checkout">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">
 										{length(props.cart) === 0 && 'Cart'}
 										{length(props.cart) > 0 && `Cart (${length(props.cart)})`}
@@ -212,8 +207,7 @@ const mapStateToProps = state => {
 		verify: state.verify,
 		buttons: state.buttons,
 		addItem: state.addItem,
-		menuOpen: state.menuOpen,
-		drawerStatus: state.drawerStatus
+		menuOpen: state.menuOpen
 	}
 }
 

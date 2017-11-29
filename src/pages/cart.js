@@ -101,15 +101,21 @@ class Cart extends React.Component {
 						>
 							<a
 								className="pa3 f6 oswald"
-								style={{ color: '#D7D9D0' }}
+								style={{ color: '#D7D9D0', cursor: 'pointer' }}
 								onClick={e => history.goBack()}
 							>
 								Shop
 							</a>
-							<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+							<a
+								className="pa3 f6 oswald"
+								style={{ color: '#D7D9D0', cursor: 'pointer' }}
+							>
 								Review Cart
 							</a>
-							<a className="pa3 f6 oswald" style={{ color: '#D7D9D0' }}>
+							<a
+								className="pa3 f6 oswald"
+								style={{ color: '#D7D9D0', cursor: 'pointer' }}
+							>
 								Shipping
 							</a>
 						</div>
