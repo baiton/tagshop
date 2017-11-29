@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import tagshop from '../images/tagshop.png'
 import history from '../history'
 import { SET_DRAWER_TRUE } from '../constants'
-import { getUser } from '../db'
-import { pathOr } from 'ramda'
 
 class StoreHeader extends React.Component {
 	componentDidMount() {
@@ -48,7 +46,8 @@ class StoreHeader extends React.Component {
 					onLeftIconButtonTouchTap={e =>
 						props.dispatch({
 							type: SET_DRAWER_TRUE
-						})}
+						})
+					}
 				/>
 				<Drawer
 					open={props.drawerStatus}

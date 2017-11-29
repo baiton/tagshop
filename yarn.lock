@@ -2,110 +2,6 @@
 # yarn lockfile v1
 
 
-"@material/animation@^0.25.0":
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/@material/animation/-/animation-0.25.0.tgz#b252ac3d0b628e79a79f0c406d7470fb56352a80"
-
-"@material/animation@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@material/animation/-/animation-0.4.1.tgz#bf8b50aedad4cffce8a5b428fdca8f1abbaf176e"
-
-"@material/base@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/base/-/base-0.24.0.tgz#888a61e5b6580e35a66384a9f8823091b4fe7c55"
-
-"@material/card@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/card/-/card-0.24.0.tgz#c11bea0999e11e8abba939600c05f97195195530"
-  dependencies:
-    "@material/elevation" "^0.1.13"
-    "@material/rtl" "^0.1.8"
-    "@material/theme" "^0.24.0"
-    "@material/typography" "^0.3.0"
-
-"@material/elevation@^0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@material/elevation/-/elevation-0.1.13.tgz#a38885f3caf4398ca6a7468c308887d70bd4605b"
-  dependencies:
-    "@material/animation" "^0.4.1"
-
-"@material/grid-list@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/grid-list/-/grid-list-0.24.0.tgz#1abfbe7768135789b255a8ec25b6354147f36730"
-  dependencies:
-    "@material/base" "^0.24.0"
-    "@material/rtl" "^0.1.8"
-    "@material/theme" "^0.24.0"
-    "@material/typography" "^0.3.0"
-
-"@material/layout-grid@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/layout-grid/-/layout-grid-0.24.0.tgz#223d771d755d887807998d96f5996e182ceb640d"
-
-"@material/list@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/list/-/list-0.24.0.tgz#c9f18e3ee5359edbb3dfd752c4f8f9863bf27f3b"
-  dependencies:
-    "@material/ripple" "^0.24.0"
-    "@material/rtl" "^0.1.8"
-    "@material/theme" "^0.24.0"
-    "@material/typography" "^0.3.0"
-
-"@material/menu@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/menu/-/menu-0.24.0.tgz#b21e9d9942fe58bb0a8439bb4b5238dc182be3af"
-  dependencies:
-    "@material/animation" "^0.4.1"
-    "@material/base" "^0.24.0"
-    "@material/elevation" "^0.1.13"
-    "@material/theme" "^0.24.0"
-    "@material/typography" "^0.3.0"
-
-"@material/ripple@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/ripple/-/ripple-0.24.0.tgz#6c67bca551e7c3829bcd0fecb6a0e56ff60edfb9"
-  dependencies:
-    "@material/base" "^0.24.0"
-    "@material/theme" "^0.24.0"
-
-"@material/rtl@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.1.8.tgz#2462db15e2d4e041666485559c028382872b01fb"
-
-"@material/select@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/select/-/select-0.24.0.tgz#98a397bd4449941addf3196efbade15ae11a93c4"
-  dependencies:
-    "@material/animation" "^0.4.1"
-    "@material/base" "^0.24.0"
-    "@material/list" "^0.24.0"
-    "@material/menu" "^0.24.0"
-    "@material/rtl" "^0.1.8"
-    "@material/theme" "^0.24.0"
-    "@material/typography" "^0.3.0"
-
-"@material/snackbar@^0.25.0":
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/@material/snackbar/-/snackbar-0.25.0.tgz#73169dbf51d6c3f23b7c84654a540e1b3c5a88a6"
-  dependencies:
-    "@material/animation" "^0.25.0"
-    "@material/base" "^0.24.0"
-    "@material/rtl" "^0.1.8"
-    "@material/theme" "^0.25.0"
-    "@material/typography" "^0.3.0"
-
-"@material/theme@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@material/theme/-/theme-0.24.0.tgz#fccc30a38c39f5d66912239fbac225684832baa2"
-
-"@material/theme@^0.25.0":
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/@material/theme/-/theme-0.25.0.tgz#707b4c61ebc62e662d36164c8dd45fcf98bb1444"
-
-"@material/typography@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.3.0.tgz#f828c2d3215bfd66c58072709b4260c64125390a"
-
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -4088,10 +3984,6 @@ lodash.merge@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
 
-lodash.pick@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
-
 lodash.template@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
@@ -4328,10 +4220,6 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
-
-mousetrap@^1.6.0:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/mousetrap/-/mousetrap-1.6.1.tgz#2a085f5c751294c75e7e81f6ec2545b29cbf42d9"
 
 ms@2.0.0:
   version "2.0.0"
@@ -5158,7 +5046,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -6252,20 +6140,6 @@ sw-toolbox@^3.4.0:
   dependencies:
     path-to-regexp "^1.0.1"
     serviceworker-cache-polyfill "^4.0.0"
-
-sweetalert-react@^0.4.10:
-  version "0.4.10"
-  resolved "https://registry.yarnpkg.com/sweetalert-react/-/sweetalert-react-0.4.10.tgz#f65019d1ac1858920986efc34d1f614061c11a2a"
-  dependencies:
-    lodash.pick "^4.4.0"
-    mousetrap "^1.6.0"
-    prop-types "^15.0.0"
-    sweetalert "^1.1.3"
-    warning "^3.0.0"
-
-sweetalert@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/sweetalert/-/sweetalert-1.1.3.tgz#d2c31ea492b22b6a8d887aea15989a238fc084ae"
 
 symbol-observable@^1.0.3, symbol-observable@^1.0.4:
   version "1.0.4"

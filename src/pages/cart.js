@@ -1,5 +1,12 @@
 import Item from '../components/_Item'
-import { AppBar, Drawer, MenuItem, Stepper } from 'material-ui'
+import {
+	AppBar,
+	Drawer,
+	MenuItem,
+	Stepper,
+	Step,
+	StepButton
+} from 'material-ui'
 import history from '../history'
 import loading from '../images/loading.svg'
 import tagshop from '../images/tagshop.png'
@@ -15,6 +22,9 @@ class Cart extends React.Component {
 	}
 
 	handleToggle = () => this.setState({ menuOpen: true })
+	state = {
+		stepIndex: 0
+	}
 
 	render() {
 		const props = this.props
@@ -103,7 +113,32 @@ class Cart extends React.Component {
 								Shipping
 							</a>
 						</div>
-						<Stepper />
+						<Stepper
+							linear={false}
+							activeStep={'hi'}
+							style={{ position: 'fixed', bottom: '0', left: '0', right: '0' }}
+						>
+							<Step>
+								<StepButton onClick={() => this.setState({ stepIndex: 0 })}>
+									Review Cart
+								</StepButton>
+							</Step>
+							<Step>
+								<StepButton onClick={() => this.setState({ stepIndex: 1 })}>
+									Shipping
+								</StepButton>
+							</Step>
+							<Step>
+								<StepButton onClick={() => this.setState({ stepIndex: 2 })}>
+									Payment
+								</StepButton>
+							</Step>
+							<Step>
+								<StepButton onClick={() => this.setState({ stepIndex: 3 })}>
+									Confirm
+								</StepButton>
+							</Step>
+						</Stepper>
 					</div>
 				)}
 				{props.cart <= [] && <CartEmpty />}

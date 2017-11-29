@@ -5,6 +5,7 @@ import CartPreview from './_Cart_Preview'
 
 class StoreFooter extends React.Component {
 	render() {
+		console.log('state', this.state)
 		return (
 			<div
 				className="tc"
