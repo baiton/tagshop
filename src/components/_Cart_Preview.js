@@ -12,7 +12,7 @@ function cartCards(cart) {
 				backgroundColor: 'white'
 			}}
 			key={cart.media_id}
-			primaryText={'$' + pathOr('0', ['price'], cart)}
+			primaryText={'$' + cart.price}
 			leftIcon={
 				<img
 					className="br-100"
@@ -98,9 +98,20 @@ class CartPreview extends React.Component {
 					targetOrigin={{ horizontal: 'left', vertical: 'top' }}
 					onRequestClose={this.handleRequestClose}
 					animation={Popover.PopoverAnimationVertical}
+					style={{
+						paddingTop: '0px',
+						paddingBottom: '0px'
+					}}
 				>
 					{length(this.props.cart) > 0 && (
-						<Menu maxHeight={175} style={{ backgroundColor: 'DeepPink' }}>
+						<Menu
+							maxHeight={175}
+							style={{
+								backgroundColor: 'DeepPink',
+								paddingTop: '0px',
+								paddingBottom: '0px'
+							}}
+						>
 							<MenuItem
 								leftIcon={
 									<i className="material-icons" style={{ color: 'white' }}>
@@ -120,7 +131,12 @@ class CartPreview extends React.Component {
 						</Menu>
 					)}
 					{!length(this.props.cart) > 0 && (
-						<Menu maxHeight={175} style={{ backgroundColor: 'DeepPink' }}>
+						<Menu
+							maxHeight={175}
+							style={{
+								backgroundColor: 'DeepPink'
+							}}
+						>
 							<MenuItem
 								leftIcon={
 									<i className="material-icons" style={{ color: 'white' }}>
