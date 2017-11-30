@@ -28,7 +28,7 @@ const Product_Card = props => {
 		>
 			<section className="flex mdc-card__primary">
 				<div className="demo-card__avatar" />
-				<div className="ma2" style={profileStyle} alt="" />
+				<div className="ma2" style={profileStyle} alt="profile" />
 				<section>
 					<a
 						href={'https://instagram.com/' + props.username}
@@ -38,6 +38,12 @@ const Product_Card = props => {
 						{props.username}
 					</a>
 				</section>
+				<i
+					className="material-icons pointer"
+					style={{ position: 'relative', marginTop: '7%', left: '38%' }}
+				>
+					more_vert
+				</i>
 			</section>
 			<section
 				className="mdc-card__media demo-card__16-9-media"

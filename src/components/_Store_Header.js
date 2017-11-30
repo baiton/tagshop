@@ -13,8 +13,6 @@ class StoreHeader extends React.Component {
 
 	handleToggle = () => this.setState({ open: !this.state.open })
 
-	handleClose = () => this.setState({ open: false })
-
 	render() {
 		const props = this.props
 		return (
@@ -41,7 +39,6 @@ class StoreHeader extends React.Component {
 							alt={tagshop}
 						/>
 					}
-					titleStyle={{ margin: '0 auto', display: 'block' }}
 					style={{
 						backgroundColor: 'DeepPink',
 						height: '65px',

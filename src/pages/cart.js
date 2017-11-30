@@ -28,7 +28,6 @@ class Cart extends React.Component {
 
 	render() {
 		const props = this.props
-		console.log('image', tagshop)
 		return (
 			<div>
 				{!(props.cart <= []) && (
@@ -121,7 +120,6 @@ class Cart extends React.Component {
 						</div>
 						<Stepper
 							linear={false}
-							activeStep={'hi'}
 							style={{ position: 'fixed', bottom: '0', left: '0', right: '0' }}
 						>
 							<Step>

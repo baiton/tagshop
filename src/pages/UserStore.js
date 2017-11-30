@@ -23,11 +23,8 @@ class UserStore extends React.Component {
 		})
 	}
 
-	handleToggle = () => this.setState({ menuOpen: true })
-
 	render() {
 		const props = this.props
-		console.log('storeState', this.state)
 		return (
 			<div>
 				{pathOr(null, ['user', 'user', 'media'], props) &&
