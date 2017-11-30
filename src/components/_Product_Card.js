@@ -40,7 +40,7 @@ const Product_Card = props => {
 				</section>
 				<i
 					className="material-icons pointer"
-					style={{ position: 'relative', marginTop: '7%', left: '38%' }}
+					style={{ position: 'relative', marginTop: '7%', left: '25%' }}
 				>
 					more_vert
 				</i>
