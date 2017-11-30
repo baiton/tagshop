@@ -3,7 +3,6 @@ import { AppBar, Drawer, FlatButton, MenuItem } from 'material-ui'
 import { connect } from 'react-redux'
 import tagshop from '../images/tagshop.png'
 import history from '../history'
-import { SET_DRAWER_TRUE } from '../constants'
 import { toUpper } from 'ramda'
 
 class StoreHeader extends React.Component {
@@ -85,7 +84,8 @@ function mapStateToProps(state) {
 	return {
 		user: state.user,
 		addItem: state.addItem,
-		menuOpen: state.menuOpen
+		menuOpen: state.menuOpen,
+		state: state
 	}
 }
 

@@ -7,6 +7,9 @@ const { CLEAR_CART } = require('../constants')
 function cartCards(cart) {
 	return (
 		<MenuItem
+			style={{
+				height: '55px'
+			}}
 			key={cart.media_id}
 			primaryText={'$' + pathOr('No Items in Cart', ['price'], cart)}
 			leftIcon={
@@ -14,7 +17,11 @@ function cartCards(cart) {
 					className="br-100"
 					src={pathOr('No Items in Cart', ['images'], cart)}
 					alt="product"
-					style={{ height: '40px', width: '40px', verticalAlign: 'middle' }}
+					style={{
+						height: '40px',
+						width: '40px',
+						verticalAlign: 'middle'
+					}}
 				/>
 			}
 			rightIcon={
@@ -29,7 +36,8 @@ function cartCards(cart) {
 						cart.dispatch({
 							type: CLEAR_CART,
 							payload: { cartObj: cart, id: cart.media_id }
-						})}
+						})
+					}
 				>
 					x
 				</button>
@@ -90,14 +98,17 @@ class CartPreview extends React.Component {
 					onRequestClose={this.handleRequestClose}
 					animation={Popover.PopoverAnimationVertical}
 				>
-					<Menu>
+					<Menu maxHeight={175}>
 						<MenuItem
 							leftIcon={
 								<i className="material-icons" style={{ color: 'white' }}>
 									shopping_cart
 								</i>
 							}
-							style={{ backgroundColor: 'DeepPink' }}
+							style={{
+								backgroundColor: 'DeepPink',
+								color: 'white'
+							}}
 							primaryText={`${totalPrice(this.props.cart)}`}
 						/>
 						{map(
