@@ -8,10 +8,11 @@ function cartCards(cart) {
 	return (
 		<MenuItem
 			style={{
-				height: '55px'
+				height: '55px',
+				backgroundColor: 'white'
 			}}
 			key={cart.media_id}
-			primaryText={'$' + pathOr('No Items in Cart', ['price'], cart)}
+			primaryText={'$' + pathOr('0', ['price'], cart)}
 			leftIcon={
 				<img
 					className="br-100"
@@ -98,24 +99,42 @@ class CartPreview extends React.Component {
 					onRequestClose={this.handleRequestClose}
 					animation={Popover.PopoverAnimationVertical}
 				>
-					<Menu maxHeight={175}>
-						<MenuItem
-							leftIcon={
-								<i className="material-icons" style={{ color: 'white' }}>
-									shopping_cart
-								</i>
-							}
-							style={{
-								backgroundColor: 'DeepPink',
-								color: 'white'
-							}}
-							primaryText={`${totalPrice(this.props.cart)}`}
-						/>
-						{map(
-							cartCards,
-							map(assoc('cart', this.props.cart), this.props.cart)
-						)}
-					</Menu>
+					{length(this.props.cart) > 0 && (
+						<Menu maxHeight={175} style={{ backgroundColor: 'DeepPink' }}>
+							<MenuItem
+								leftIcon={
+									<i className="material-icons" style={{ color: 'white' }}>
+										shopping_cart
+									</i>
+								}
+								style={{
+									backgroundColor: 'DeepPink',
+									color: 'white'
+								}}
+								primaryText={`${totalPrice(this.props.cart)}`}
+							/>
+							{map(
+								cartCards,
+								map(assoc('cart', this.props.cart), this.props.cart)
+							)}
+						</Menu>
+					)}
+					{!length(this.props.cart) > 0 && (
+						<Menu maxHeight={175} style={{ backgroundColor: 'DeepPink' }}>
+							<MenuItem
+								leftIcon={
+									<i className="material-icons" style={{ color: 'white' }}>
+										shopping_cart
+									</i>
+								}
+								style={{
+									backgroundColor: 'DeepPink',
+									color: 'white'
+								}}
+								primaryText="No Items in cart"
+							/>
+						</Menu>
+					)}
 				</Popover>
 			</div>
 		)
