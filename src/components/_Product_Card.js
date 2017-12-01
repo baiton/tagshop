@@ -15,7 +15,18 @@ const { contains, map, indexOf, length, remove } = require('ramda')
 const { SET_CART } = require('../constants')
 
 function Tags(tag) {
-	return <FlatButton key={tag} backgroundColor="lightGrey" label={tag} />
+	console.log('tag', tag)
+	return (
+		<div
+			key={tag}
+			style={{
+				paddingRight: '8px',
+				paddingBottom: '8px'
+			}}
+		>
+			<FlatButton backgroundColor="lightGrey" label={tag} />
+		</div>
+	)
 }
 
 function data(tags) {
@@ -23,11 +34,12 @@ function data(tags) {
 	if (length(tags) === 1) {
 		return ['No tags']
 	} else {
-		return remove(index, index, tags)
+		return remove(index, 1, tags)
 	}
 }
 
 const Product_Card = props => {
+	console.log('tags', props.tags)
 	return (
 		<Card
 			style={{
@@ -92,7 +104,9 @@ const Product_Card = props => {
 				</CardActions>
 			</CardTitle>
 			<CardText>{props.description}</CardText>
-			<CardActions>{map(Tags, data(props.tags))}</CardActions>
+			<CardActions className="flex-flow" style={{ width: '100%' }}>
+				{map(Tags, data(props.tags))}
+			</CardActions>
 		</Card>
 	)
 }
