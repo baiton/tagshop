@@ -17,13 +17,7 @@ const { SET_CART } = require('../constants')
 function Tags(tag) {
 	console.log('tag', tag)
 	return (
-		<div
-			key={tag}
-			style={{
-				paddingRight: '8px',
-				paddingBottom: '8px'
-			}}
-		>
+		<div key={tag} style={{ paddingBottom: '8px' }}>
 			<FlatButton backgroundColor="lightGrey" label={tag} />
 		</div>
 	)
@@ -44,7 +38,8 @@ const Product_Card = props => {
 		<Card
 			style={{
 				display: 'block',
-				width: '100vw'
+				width: '100vw',
+				paddingBottom: '20px'
 			}}
 			key={props.media_id}
 		>
@@ -104,7 +99,7 @@ const Product_Card = props => {
 				</CardActions>
 			</CardTitle>
 			<CardText>{props.description}</CardText>
-			<CardActions className="flex-flow" style={{ width: '100%' }}>
+			<CardActions style={{ width: '100%', flexWrap: 'wrap', display: 'flex' }}>
 				{map(Tags, data(props.tags))}
 			</CardActions>
 		</Card>
