@@ -1,7 +1,7 @@
 import React from 'react'
 import { Popover, Menu, MenuItem } from 'material-ui'
 const { connect } = require('react-redux')
-const { map, pathOr, length, assoc } = require('ramda')
+const { map, pathOr, length, assoc, indexOf } = require('ramda')
 const { CLEAR_CART } = require('../constants')
 
 function cartCards(cart) {
@@ -9,7 +9,9 @@ function cartCards(cart) {
 		<MenuItem
 			style={{
 				height: '55px',
-				backgroundColor: 'white'
+				backgroundColor: 'white',
+				paddingTop: '0px',
+				paddingBottom: '0px'
 			}}
 			key={cart.media_id}
 			primaryText={'$' + cart.price}
@@ -52,6 +54,11 @@ function totalPrice(cart) {
 	for (var cartLength = length(cart); cartLength !== 0; cartLength--) {
 		price += parseFloat(cart[cartLength - 1].price)
 	}
+
+	price = `${price}`
+	let dotLocation = indexOf('.', price)
+	price = price.substring(0, dotLocation + 3)
+
 	return '$' + price
 }
 
@@ -107,9 +114,7 @@ class CartPreview extends React.Component {
 						<Menu
 							maxHeight={175}
 							style={{
-								backgroundColor: 'DeepPink',
-								paddingTop: '0px',
-								paddingBottom: '0px'
+								backgroundColor: 'DeepPink'
 							}}
 						>
 							<MenuItem

@@ -10,7 +10,7 @@ class StoreFooter extends React.Component {
 				className="tc"
 				style={{
 					boxShadow: '0px 0px 0px 2px MediumVioletRed',
-					backgroundColor: 'DeepPink',
+					backgroundColor: 'white',
 					bottom: '0',
 					position: 'fixed',
 					right: '0',
@@ -26,7 +26,9 @@ class StoreFooter extends React.Component {
 							<FlatButton label="Checkout" style={{ color: 'white' }} />
 						</Link>
 					}
-					style={{ backgroundColor: 'DeepPink' }}
+					style={{
+						backgroundColor: 'DeepPink'
+					}}
 				/>
 			</div>
 		)
