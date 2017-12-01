@@ -18,7 +18,11 @@ function Tags(tag) {
 	console.log('tag', tag)
 	return (
 		<div key={tag} style={{ paddingBottom: '8px' }}>
-			<FlatButton backgroundColor="lightGrey" label={tag} />
+			<FlatButton
+				backgroundColor="lightGrey"
+				style={{ borderRadius: '9999px' }}
+				label={tag}
+			/>
 		</div>
 	)
 }
@@ -26,7 +30,7 @@ function Tags(tag) {
 function data(tags) {
 	const index = indexOf('tagshop', tags)
 	if (length(tags) === 1) {
-		return ['No tags']
+		return []
 	} else {
 		return remove(index, 1, tags)
 	}
@@ -65,7 +69,7 @@ const Product_Card = props => {
 				className="oswald flex"
 				title={'$' + props.price}
 			>
-				<CardActions style={{ textAlign: 'right' }}>
+				<CardActions style={{ flex: 'flex-end' }}>
 					<FlatButton
 						label="Details"
 						style={{ color: 'DeepPink', position: 'relative' }}

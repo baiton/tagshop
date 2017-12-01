@@ -37,7 +37,7 @@ class Home extends React.Component {
 						<TextField
 							value={props.InstaUser}
 							onChange={props.handleInsta(props.handleInsta)}
-							hintText="username"
+							floatingLabelText="username"
 							hintStyle={{ right: '37%' }}
 						/>
 						<br />
@@ -45,7 +45,7 @@ class Home extends React.Component {
 						<TextField
 							value={props.Email}
 							onChange={props.handleEmail(props.handleEmail)}
-							hintText="email"
+							floatingLabelText="email"
 							hintStyle={{ right: '42%' }}
 						/>
 						<br />
