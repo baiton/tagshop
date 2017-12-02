@@ -1,20 +1,12 @@
 import Item from '../components/_Item'
-import {
-	AppBar,
-	Drawer,
-	MenuItem,
-	Stepper,
-	Step,
-	StepButton
-} from 'material-ui'
+import { Stepper, Step, StepButton } from 'material-ui'
 import history from '../history'
-import loading from '../images/loading.svg'
-import tagshop from '../images/tagshop.png'
 import CartEmpty from '../components/_Cart_Empty'
+import CartHeader from '../components/_Cart_Header'
 const React = require('react')
 const { connect } = require('react-redux')
 const { SET_CART } = require('../constants')
-const { map, compose, assoc, pathOr } = require('ramda')
+const { map, compose, assoc } = require('ramda')
 
 class Cart extends React.Component {
 	componentDidMount() {
@@ -32,51 +24,7 @@ class Cart extends React.Component {
 			<div>
 				{!(props.cart <= []) && (
 					<div>
-						<div
-							className="tc"
-							style={{
-								boxShadow: '0px 0px 5px black',
-								backgroundColor: 'DeepPink',
-								position: 'sticky',
-								top: '0',
-								right: '0',
-								left: '0'
-							}}
-						>
-							<AppBar
-								title={
-									<img
-										id="logo"
-										src={tagshop}
-										className="br-100 ba white ma2"
-										style={{
-											height: '50px',
-											width: '50px',
-											borderWidth: '2px',
-											backgroundColor: 'white'
-										}}
-										alt={loading}
-									/>
-								}
-								style={{
-									backgroundColor: 'DeepPink',
-									height: '65px'
-								}}
-								zDepth={0}
-								onLeftIconButtonTouchTap={this.handleToggle}
-							/>
-							<Drawer
-								open={pathOr(false, ['menuOpen'], this.state)}
-								onRequestChange={open => this.setState({ menuOpen: open })}
-								docked={false}
-							>
-								<MenuItem
-									onClick={e => history.replace('/')}
-									primaryText="Home"
-								/>
-							</Drawer>
-							<h2 className="tc white bg-DeepPink ma0 cubano pb2">TAGSHOP</h2>
-						</div>
+						<CartHeader />
 						<section className="flex justify-center">
 							<h2 className="oswald f2" style={{ color: 'DeepPink' }}>
 								CHECKOUT

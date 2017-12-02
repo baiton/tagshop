@@ -12,7 +12,7 @@ import {
 } from 'material-ui'
 import '../css/product_card.css'
 import { Link } from 'react-router-dom'
-const { contains, map, indexOf, length, remove } = require('ramda')
+const { contains, map, indexOf, remove } = require('ramda')
 const { SET_CART } = require('../constants')
 
 function Tags(tag) {

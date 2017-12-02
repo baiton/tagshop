@@ -5,12 +5,15 @@ import registerServiceWorker from './registerServiceWorker'
 import store from './store.js'
 import { Provider } from 'react-redux'
 import { MuiThemeProvider } from 'material-ui'
+import { StripeProvider } from 'react-stripe-elements'
 
 const Application = () => (
 	<Provider store={store}>
-		<MuiThemeProvider>
-			<App />
-		</MuiThemeProvider>
+		<StripeProvider apiKey={'1234'}>
+			<MuiThemeProvider>
+				<App />
+			</MuiThemeProvider>
+		</StripeProvider>
 	</Provider>
 )
 

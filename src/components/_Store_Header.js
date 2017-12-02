@@ -44,8 +44,8 @@ class StoreHeader extends React.Component {
 						borderWidth: '2px',
 						backgroundColor: 'white',
 						position: 'relative',
-						zIndex: '2000',
-						top: '0'
+						zIndex: '1500',
+						top: '8'
 					}}
 					alt={tagshop}
 				/>
