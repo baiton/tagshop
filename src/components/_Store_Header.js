@@ -21,24 +21,10 @@ class StoreHeader extends React.Component {
 				style={{
 					boxShadow: '0px 0px 5px black',
 					backgroundColor: 'DeepPink',
-					marginTop: '65px'
+					marginTop: '8px'
 				}}
 			>
 				<AppBar
-					title={
-						<img
-							id="logo"
-							src={props.user.user.media[0].profile_picture}
-							className="br-100 ba white ma2"
-							style={{
-								height: '50px',
-								width: '50px',
-								borderWidth: '2px',
-								backgroundColor: 'white'
-							}}
-							alt={tagshop}
-						/>
-					}
 					style={{
 						backgroundColor: 'DeepPink',
 						height: '65px',
@@ -48,6 +34,21 @@ class StoreHeader extends React.Component {
 					zDepth={0}
 					onLeftIconButtonTouchTap={this.handleToggle}
 				/>
+				<img
+					id="logo"
+					src={props.user.user.media[0].profile_picture}
+					className="br-100 ba white"
+					style={{
+						height: '50px',
+						width: '50px',
+						borderWidth: '2px',
+						backgroundColor: 'white',
+						position: 'relative',
+						zIndex: '2000',
+						top: '0'
+					}}
+					alt={tagshop}
+				/>
 				<Drawer
 					docked={false}
 					open={this.state.open}
@@ -55,10 +56,10 @@ class StoreHeader extends React.Component {
 				>
 					<MenuItem onClick={e => history.replace('/')} primaryText="Home" />
 				</Drawer>
-				<h2 className="tc white bg-DeepPink ma0 oswald">
+				<h2 className="tc white bg-DeepPink mt2 mb1 oswald">
 					{toUpper(props.user.user.media[0].username)}
 				</h2>
-				<div className="flex justify-between pr4 pl4 pb3 pt2 white f6">
+				<div className="flex justify-between pr2 pl2 pb2 white f6">
 					<FlatButton
 						label="RECENT"
 						style={{ color: 'white', borderRadius: '9999px' }}
