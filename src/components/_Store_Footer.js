@@ -23,7 +23,7 @@ class StoreFooter extends React.Component {
 					iconElementLeft={<CartPreview />}
 					iconElementRight={
 						<Link to="/cart">
-							<FlatButton label="Checkout" style={{ color: 'white' }} />
+							<FlatButton label="Checkout" backgroundColor="#A9005B" style={{ color: 'white' }} />
 						</Link>
 					}
 					style={{

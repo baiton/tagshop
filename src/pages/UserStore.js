@@ -133,7 +133,7 @@ class UserStore extends React.Component {
 				)}
 				{is(String, pathOr(null, ['user', 'user', 'media'], props)) && (
 					<div>
-						<div className="flex fustify-around mp3 pv2">
+						<div className="flex justify-around">
 							<div>
 								<Link to="/">
 									<button className="mdc-button mdc-button--raised mdc-card__action ph3 pv2 ma2">

@@ -94,7 +94,7 @@ class CartPreview extends React.Component {
 				<i
 					className="material-icons"
 					onClick={this.handleTouchTap}
-					style={{ fontSize: '3rem', cursor: 'pointer', color: 'white' }}
+					style={{ fontSize: "36px", cursor: 'pointer', color: 'white' }}
 				>
 					shopping_cart
 				</i>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Drawer, FlatButton, MenuItem } from 'material-ui'
+import { AppBar, Drawer, FlatButton, MenuItem, Chip } from 'material-ui'
 import { connect } from 'react-redux'
 import tagshop from '../images/tagshop.png'
 import history from '../history'
@@ -60,18 +60,21 @@ class StoreHeader extends React.Component {
 					{toUpper(props.user.user.media[0].username)}
 				</h2>
 				<div className="flex justify-between pr2 pl2 pb2 white f6">
-					<FlatButton
-						label="RECENT"
-						style={{ color: 'white', borderRadius: '9999px' }}
-					/>
-					<FlatButton
-						label="POPULAR"
-						style={{ color: 'white', borderRadius: '9999px' }}
-					/>
-					<FlatButton
-						label="SOLD OUT"
-						style={{ color: 'white', borderRadius: '9999px' }}
-					/>
+					<Chip
+						backgroundColor="DeepPink"
+					>
+					RECENT
+				</Chip>
+					<Chip
+						backgroundColor="DeepPink"
+					>
+						POPULAR
+					</Chip>
+					<Chip
+						backgroundColor="DeepPink"
+					>
+						SOLD OUT
+					</Chip>
 				</div>
 			</div>
 		)
