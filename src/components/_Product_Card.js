@@ -50,9 +50,10 @@ const Product_Card = props => {
 			</CardMedia>
 			<CardTitle
 				style={{ paddingBottom: '0' }}
-				className="oswald flex"
+				className="oswald flex justify-between"
 				title={'$' + props.price}
 			>
+				<div className="flex justify-around">
 				<FlatButton label="Details" style={{ color: 'DeepPink' }} />
 				{!contains(props.media_id, map(x => x.media_id, props.cart)) && (
 					<RaisedButton
@@ -79,6 +80,7 @@ const Product_Card = props => {
 						/>
 					</Link>
 				)}
+				</div>
 			</CardTitle>
 			<CardText>{props.description}</CardText>
 			<CardActions style={{ width: '100%', flexWrap: 'wrap', display: 'flex' }}>
